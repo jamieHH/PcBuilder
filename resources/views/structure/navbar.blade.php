@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                PC Builder | Development
             </a>
         </div>
 
