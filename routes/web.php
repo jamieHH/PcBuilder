@@ -15,13 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('test')->group(function () {
+Route::prefix('tests')->group(function () {
     Route::get('/', function () {
         echo 'test page';
     });
 
     Route::get('/form-page', function () {
-        return view('example.form-page');
+        return view('examples.form-page');
     });
 });
 
@@ -31,10 +31,20 @@ Route::get('/phpinfo', function () {
 
 Auth::routes();
 
-Route::prefix('images')->group(function () {
-    Route::get('background', 'ImagesController@background');
+Route::namespace('Web')->group(function() {
+    Route::namespace('Util')->prefix('util')->group(function () {
+        Route::get('images/background', 'ImagesController@background');
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    });
+
+    Route::namespace('Gpus')->prefix('gpus')->group(function() {
+        Route::get('/', 'GpusController@index')->name('gpus');
+    });
+
+    Route::namespace('Cpus')->prefix('cpus')->group(function() {
+        Route::get('/', 'CpusController@index')->name('cpus');
+    });
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/gpus/search', 'Gpus\GpusController@getIndex')->name('gpus.search');

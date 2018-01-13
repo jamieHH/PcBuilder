@@ -91,12 +91,12 @@
                 <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar" style="background-color: dimgrey; height: 100%; overflow: scroll;">
                     <a href="{{ route('cpus') }}">
                         <div class="row">
-                            <span>Cpus</span>
+                            <span><strong>Cpus</strong></span>
                         </div>
                     </a>
                     <a href="{{ route('gpus') }}">
                         <div class="row">
-                            <span>Gpus</span>
+                            <span><strong>Gpus</strong></span>
                         </div>
                     </a>
                 </nav>

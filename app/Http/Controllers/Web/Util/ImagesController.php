@@ -1,8 +1,6 @@
-<?php
+<?php namespace App\Http\Controllers\Web\Util;
 
-namespace App\Http\Controllers\Web;
-
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ImagesController extends Controller
 {
