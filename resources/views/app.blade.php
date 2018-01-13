@@ -10,13 +10,10 @@
             @yield('content')
         </div>
 
-        @include('structure.footer')
-
         @yield('page-modals')
 
-        @yield('page-javascript')
+        @include('structure.footer')
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('page-javascript')
     </body>
 </html>
