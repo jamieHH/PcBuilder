@@ -1,4 +1,32 @@
 // Moving body content below the fixed navbar.
 body {
-  padding-top: 72px;
+  padding-top: 50px;
+}
+
+// Shaping the navbar to be a solid block
+.navbar {
+  border: 0 !important;
+  margin: 0 !important;
+}
+
+// Modifying the standard sidebar to display better
+.sidebar {
+  padding: 0 !important;
+  background-color: #f0f0f0;
+
+  ul {
+    li {
+      width: 100%;
+      margin: 0 !important;
+
+      a {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+// Padding the content away from the nav and sidebar
+.main {
+  padding: 15px;
 }

@@ -7,7 +7,23 @@
         <div id="app">
             @include('structure.navbar')
 
-            @yield('content')
+            <div class="container-fluid">
+                <div class="row">
+                    @guest
+                        <div class="col-sm-12 main">
+                            @yield('content')
+                        </div>
+                    @else
+                        <div class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                            @include('structure.sidebar')
+                        </div>
+
+                        <div class="col-sm-9 ml-sm-auto col-md-10 pt-3 main">
+                            @yield('content')
+                        </div>
+                    @endguest
+                </div>
+            </div>
         </div>
 
         @yield('page-modals')
