@@ -7,8 +7,8 @@
         <div id="app">
             @include('structure.navbar')
 
-            <div class="container-fluid">
-                <div class="row">
+            <div class="container-fluid" style="height: 100%;">
+                <div class="row" style="height: 100%;">
                     @guest
                         <div class="col-sm-12 main">
                             @yield('content')
