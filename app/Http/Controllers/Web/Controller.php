@@ -1,0 +1,11 @@
+<?php namespace App\Http\Controllers\Web;
+
+use App\Http\Controllers\Controller as BaseController;
+
+class Controller extends BaseController
+{
+    public function index()
+    {
+        return response()->redirectTo('dashboard');
+    }
+}

@@ -1,17 +1,22 @@
 <ul class="nav nav-pills flex-column">
-    <li class="nav-item active">
-        <a class="nav-link" href="#"><b>Dashboard </b><span class="sr-only">(current)</span></a>
+    <li class="nav-item {{ (Request::is('dashboard')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
+            <b><i class="fa fa-tachometer"></i>Dashboard</b><span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::is('components')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('components') }}">
+            <b><i class="fa fa-th-list"></i>Components</b>
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#"><b>Components</b></a>
+        <a class="nav-link" href="#">
+            <b><i class="fa fa-hdd-o"></i>Systems</b>
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#"><b>Systems</b></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#"><b>Inventories</b></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#"><b>Lists</b></a>
+        <a class="nav-link" href="#">
+            <b><i class="fa fa-cubes"></i>Inventories</b>
+        </a>
     </li>
 </ul>

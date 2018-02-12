@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);#app,.main,.sidebar,body,html{height:100%}body{padding-top:50px}.navbar{border:0!important;margin:0!important}.sidebar{padding:0!important;background-color:#f0f0f0;overflow:scroll}.sidebar ul li{width:100%;margin:0!important}.sidebar ul li a{border-radius:0}.main{padding:15px;overflow:scroll}
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);#app,.main,.sidebar,body,html{height:100%}body{padding-top:50px}.navbar{border:0!important;margin:0!important}.navbar .dropdown-menu{border-radius:0;border:0}.sidebar{padding:0!important;background-color:#333;overflow:scroll}.sidebar .nav-pills .nav-item{width:100%;margin:0!important}.sidebar .nav-pills .nav-item .nav-link{border-radius:0;color:#f0f0f0}.sidebar .nav-pills .nav-item i{width:36px;text-align:center;padding-right:15px}.sidebar .nav-pills a:hover{background-color:#6e6e6e}.main{padding:15px;overflow:scroll;background-color:#bbb}.main .input-group-addon i{width:20px;text-align:center}
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
