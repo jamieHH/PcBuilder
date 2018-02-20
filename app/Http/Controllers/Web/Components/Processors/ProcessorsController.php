@@ -10,6 +10,11 @@ class ProcessorsController extends Controller
         return View::make('components.processors.index');
     }
 
+    public function new()
+    {
+        return View::make('components.processors.new');
+    }
+
     public function json()
     {
         return response()->json(['data' => ['processor' => 'details']]);
