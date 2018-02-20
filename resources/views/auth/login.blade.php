@@ -33,19 +33,19 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group form-group-lg">
+                        <div class="form-group-lg form-group-lg">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <button type="submit" class="btn btn-block btn-primary">
-                                        Login
-                                    </button>
+                                    <a class="btn" href="{{ route('password.request') }}">
+                                        Forgot Your Password?
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <a class="btn btn-block" href="{{ route('password.request') }}">
-                                        Forgot Your Password?
-                                    </a>
+                                    <button type="submit" class="btn btn-primary pull-right">
+                                        Login
+                                    </button>
                                 </div>
                             </div>
                         </div>
