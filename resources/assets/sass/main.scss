@@ -58,8 +58,28 @@ body {
   overflow: scroll;
   background-color: #bbb;
 
-  .input-group-addon {
+  .section {
+    padding: 10px 0 10px 0;
+  }
 
+  .panel-title {
+
+    font-size: 1.6em;
+    padding: 10px 10px 5px 10px;
+
+    i {
+      padding-right: 10px;
+    }
+  }
+
+  .form-group {
+    label {
+      font-size: 1.4em;
+      font-weight: normal;
+    }
+  }
+
+  .input-group-addon {
     i {
       width: 20px;
       text-align: center;
