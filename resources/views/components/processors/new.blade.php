@@ -236,20 +236,17 @@
             },
             methods: {
                 getData: function() {
-                    // TODO: get select data
+                    // TODO: get select boxes data
                 },
                 postData: function() {
                     var vm = this;
-                    var options = {
-
-                    };
 
                     var data = this.processor;
 
                     $.post(routes['components.processors.new.post'], function(data) {
-
+                        // TODO: success message and redirect
                     }, function() {
-
+                        // TODO: validation messages / alerts
                     })
                 }
             }
