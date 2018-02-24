@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers\Web\Components\Processors;
 
 use App\Http\Controllers\Web\Controller;
+use App\Http\Requests\Web\Components\Processors\NewProcessorRequest;
+use App\Http\Requests\Web\Components\Processors\ProcessorRequest;
 use View;
 
 class ProcessorsController extends Controller
@@ -15,7 +17,12 @@ class ProcessorsController extends Controller
         return View::make('components.processors.new');
     }
 
-    public function json()
+    public function create(NewProcessorRequest $request)
+    {
+        return response()->json(['message', 'New Processor added successfully']);
+    }
+
+    public function json(ProcessorRequest $request)
     {
         return response()->json(['data' => ['processor' => 'details']]);
     }

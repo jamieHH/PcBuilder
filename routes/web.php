@@ -19,6 +19,7 @@ Route::namespace('Web')->group(function() {
 
             Route::get('/json', 'ProcessorsController@json')->name('components.processors.json');
             Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
+            Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');
             Route::get('/', 'ProcessorsController@index')->name('components.processors');
         });
 
