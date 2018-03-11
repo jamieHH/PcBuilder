@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="mysql" defaultIdMethod="native" namespace="App\Models">
+    <table name="cpu" idMethod="native" phpName="Cpu">
+        <column name="id" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+        <column name="manufacturer_id" phpName="ManufacturerId" type="INTEGER" size="8" required="true"/>
+        <column name="core_count" phpName="CoreCount" type="INTEGER" size="8" required="true"/>
+        <column name="thread_count" phpName="ThreadCount" type="INTEGER" size="8" required="true"/>
+        <column name="base_clock" phpName="BaseClock" type="DOUBLE" size="6" scale="2" required="true"/>
+        <column name="boost_clock" phpName="BoostClock" type="DOUBLE" size="6" scale="2"/>
+        <column name="tdp" phpName="Tdp" type="INTEGER" size="8"/>
+        <column name="data_width" phpName="DataWidth" type="INTEGER" size="8"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="manufacturer" name="cpu_fk_26eba6">
+            <reference local="manufacturer_id" foreign="id"/>
+        </foreign-key>
+        <index name="cpu_fi_26eba6">
+            <index-column name="manufacturer_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="gpu" idMethod="native" phpName="Gpu">
+        <column name="id" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+        <column name="manufacturer_id" phpName="ManufacturerId" type="INTEGER" size="8" required="true"/>
+        <column name="core_count" phpName="CoreCount" type="INTEGER" size="8" required="true"/>
+        <column name="base_clock" phpName="BaseClock" type="DOUBLE" size="6" scale="2" required="true"/>
+        <column name="boost_clock" phpName="BoostClock" type="DOUBLE" size="6" scale="2"/>
+        <column name="tdp" phpName="Tdp" type="INTEGER" size="8"/>
+        <column name="cuda_core_count" phpName="CudaCoreCount" type="INTEGER" size="255"/>
+        <column name="memory_capacity" phpName="MemoryCapacity" type="DOUBLE" size="6" scale="2"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="manufacturer" name="gpu_fk_26eba6">
+            <reference local="manufacturer_id" foreign="id"/>
+        </foreign-key>
+        <index name="gpu_fi_26eba6">
+            <index-column name="manufacturer_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="manufacturer" idMethod="native" phpName="Manufacturer">
+        <column name="id" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="migrations" idMethod="native" phpName="Migrations">
+        <column name="id" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="migration" phpName="Migration" type="VARCHAR" size="255" required="true"/>
+        <column name="batch" phpName="Batch" type="INTEGER" required="true"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="password_resets" idMethod="native" phpName="PasswordResets">
+        <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
+        <column name="token" phpName="Token" type="VARCHAR" size="255" required="true"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+        <index name="password_resets_email_index">
+            <index-column name="email"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="users" idMethod="native" phpName="Users">
+        <column name="id" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+        <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
+        <column name="password" phpName="Password" type="VARCHAR" size="255" required="true"/>
+        <column name="remember_token" phpName="RememberToken" type="VARCHAR" size="100"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP"/>
+        <unique name="users_email_unique">
+            <unique-column name="email"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+</database>

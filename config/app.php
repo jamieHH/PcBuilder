@@ -167,6 +167,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Propel\PropelLaravel\GeneratorServiceProvider::class,
+        Propel\PropelLaravel\RuntimeServiceProvider::class,
 
         /*
          * Application Service Providers...
