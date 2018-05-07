@@ -4,10 +4,10 @@ use Propel\Generator\Manager\MigrationManager;
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1520795451.
- * Generated on 2018-03-11 19:10:51 by jamiehatswellhough
+ * up to version 1525728138.
+ * Generated on 2018-05-07 21:22:18 by jamiehatswellhough
  */
-class PropelMigration_1520795451
+class PropelMigration_1525728138
 {
     public $comment = '';
 
@@ -45,9 +45,11 @@ class PropelMigration_1520795451
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-RENAME TABLE `password_resets` TO `password_reset`;
+DROP TABLE IF EXISTS `migrations`;
 
-RENAME TABLE `users` TO `user`;
+ALTER TABLE `users`
+
+  CHANGE `id` `id` INTEGER(10) NOT NULL AUTO_INCREMENT;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -69,9 +71,17 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-RENAME TABLE `password_reset` TO `password_resets`;
+ALTER TABLE `users`
 
-RENAME TABLE `user` TO `users`;
+  CHANGE `id` `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `migrations`
+(
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `migration` VARCHAR(255) NOT NULL,
+    `batch` INTEGER NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
