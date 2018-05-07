@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-3">
-        <a href="#">
+        <a href="{{ route('components.motherboards') }}">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <i class="fa fa-microchip"></i> Motherboards

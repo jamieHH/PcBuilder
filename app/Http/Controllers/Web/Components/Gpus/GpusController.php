@@ -9,9 +9,4 @@ class GpusController extends Controller
     {
         return View::make('components.gpus.index');
     }
-
-    public function json()
-    {
-        return response()->json(['data' => ['gpu' => 'details']]);
-    }
 }

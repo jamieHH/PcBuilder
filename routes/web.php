@@ -16,16 +16,17 @@ Auth::routes();
 Route::namespace('Web')->group(function() {
     Route::namespace('Components')->prefix('components')->group(function() {
         Route::namespace('Processors')->prefix('processors')->group(function() {
-
             Route::get('/json', 'ProcessorsController@json')->name('components.processors.json');
             Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
             Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');
             Route::get('/', 'ProcessorsController@index')->name('components.processors');
         });
 
-        Route::namespace('Gpus')->prefix('gpus')->group(function() {
+        Route::namespace('Motherboards')->prefix('motherboards')->group(function() {
+            Route::get('/', 'MotherboardsController@index')->name('components.motherboards');
+        });
 
-            Route::get('/json', 'GpusController@json')->name('components.gpus.json');
+        Route::namespace('Gpus')->prefix('gpus')->group(function() {
             Route::get('/', 'GpusController@index')->name('components.gpus');
         });
 
