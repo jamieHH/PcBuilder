@@ -37,6 +37,10 @@ Route::namespace('Web')->group(function() {
         Route::get('/', 'InventoriesController@index')->name('inventories');
     });
 
+    Route::namespace('Lists')->prefix('lists')->group(function() {
+        Route::get('/', 'ListsController@index')->name('lists');
+    });
+
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('/', 'Controller@index')->name('root');

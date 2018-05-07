@@ -19,4 +19,9 @@
             <b><i class="fa fa-cubes"></i>Inventories</b>
         </a>
     </li>
+    <li class="nav-item {{ (isRouteOf(Request::path(), 'lists')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('lists') }}">
+            <b><i class="fa fa-list"></i>Lists</b>
+        </a>
+    </li>
 </ul>
