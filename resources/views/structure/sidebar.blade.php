@@ -14,8 +14,8 @@
             <b><i class="fa fa-hdd-o"></i>Systems</b>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ (isRouteOf(Request::path(), 'inventories')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('inventories') }}">
             <b><i class="fa fa-cubes"></i>Inventories</b>
         </a>
     </li>
