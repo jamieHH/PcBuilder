@@ -9,8 +9,8 @@
             <b><i class="fa fa-th-list"></i>Components</b>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ (isRouteOf(Request::path(), 'systems')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('systems') }}">
             <b><i class="fa fa-hdd-o"></i>Systems</b>
         </a>
     </li>

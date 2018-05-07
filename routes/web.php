@@ -33,6 +33,10 @@ Route::namespace('Web')->group(function() {
         Route::get('/', 'ComponentsController@index')->name('components');
     });
 
+    Route::namespace('Systems')->prefix('systems')->group(function() {
+        Route::get('/', 'SystemsController@index')->name('systems');
+    });
+
     Route::namespace('Inventories')->prefix('inventories')->group(function() {
         Route::get('/', 'InventoriesController@index')->name('inventories');
     });
