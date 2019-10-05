@@ -243,11 +243,21 @@
 
                     var data = this.processor;
 
-                    $.post(routes['components.processors.new.post'], function(data) {
-                        // TODO: success message and redirect
-                    }, function() {
-                        // TODO: validation messages / alerts
-                    })
+                    // $.post(routes['components.processors.new.post'], function(data) {
+                    //     // TODO: success message and redirect
+                    // }, function() {
+                    //     // TODO: validation messages / alerts
+                    // })
+
+                    $.ajax({
+                        url: routes['components.processors.new.post'],
+                        type: "POST",
+                        data: data,
+                        dataType: 'json', // needed in order to no cause data sending error
+                        success: function(response){
+                            console.log("yes response") // TODO: set up method in app to process json post requests properly
+                        }
+                    });
                 }
             }
         });
