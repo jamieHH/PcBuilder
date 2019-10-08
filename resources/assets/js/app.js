@@ -31,5 +31,5 @@ $.ajaxSetup({
 
 // window.app = {
 //     routes: {},
-//     variables: {}
+//     variables: {},
 // };

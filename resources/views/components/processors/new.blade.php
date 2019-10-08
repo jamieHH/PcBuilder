@@ -51,20 +51,20 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group form-group-lg">
-                            <label for="base-clock">Base Clock <small class="text-muted">(Ghz)</small></label>
+                            <label for="base-clock">Base Clock <small class="text-muted">(MHz)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-tachometer"></i></span>
-                                <input id="base-clock" type="number" min="0" max="16" step="0.05" class="form-control" name="base_clock" placeholder="Base Clock" v-model="processor.baseClock">
+                                <input id="base-clock" type="number" min="0" class="form-control" name="base_clock" placeholder="Base Clock" v-model="processor.baseClock">
                             </div>
                             <!-- inline error -->
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group form-group-lg">
-                            <label for="boost-clock">Boost Clock <small class="text-muted">(Ghz)</small></label>
+                            <label for="boost-clock">Boost Clock <small class="text-muted">(MHz)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-tachometer"></i></span>
-                                <input id="boost-clock" type="number" min="0" max="16" step="0.05" class="form-control" name="boost_clock" placeholder="Boost Clock" v-model="processor.boostClock">
+                                <input id="boost-clock" type="number" min="0" class="form-control" name="boost_clock" placeholder="Boost Clock" v-model="processor.boostClock">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -74,7 +74,7 @@
                             <label for="core-count">Core Count</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="core-count" type="number" min="0" max="128" step="1"  class="form-control" name="core_count" placeholder="Core Count" v-model="processor.coreCount">
+                                <input id="core-count" type="number" min="0" class="form-control" name="core_count" placeholder="Core Count" v-model="processor.coreCount">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -84,7 +84,7 @@
                             <label for="thread-count">Thread Count</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-                                <input id="thread-count" type="number" min="0" max="128" step="1"  class="form-control" name="thread_count" placeholder="Thread Count" v-model="processor.threadCount">
+                                <input id="thread-count" type="number" min="0" class="form-control" name="thread_count" placeholder="Thread Count" v-model="processor.threadCount">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -96,7 +96,7 @@
                             <label for="l1-cache">L1 Cache <small class="text-muted">(MBs)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="l1-cache" type="number" min="0" max="128" step="1"  class="form-control" name="l1_cache" placeholder="L1 Cache" v-model="processor.l1Cache">
+                                <input id="l1-cache" type="number" min="0" class="form-control" name="l1_cache" placeholder="L1 Cache" v-model="processor.l1Cache">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -106,7 +106,7 @@
                             <label for="l2-cache">L2 Cache <small class="text-muted">(MBs)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="l2-cache" type="number" min="0" max="128" step="1"  class="form-control" name="l2_cache" placeholder="L2 Cache" v-model="processor.l2Cache">
+                                <input id="l2-cache" type="number" min="0" class="form-control" name="l2_cache" placeholder="L2 Cache" v-model="processor.l2Cache">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -116,7 +116,7 @@
                             <label for="l3-cache">L3 Cache <small class="text-muted">(MBs)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="l3-cache" type="number" min="0" max="128" step="1"  class="form-control" name="l3_cache" placeholder="L3 Cache" v-model="processor.l3Cache">
+                                <input id="l3-cache" type="number" min="0" class="form-control" name="l3_cache" placeholder="L3 Cache" v-model="processor.l3Cache">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -133,7 +133,7 @@
                             <label for="tdp">Thermal Design Power <small class="text-muted">(Watts)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-thermometer-half"></i></span>
-                                <input id="tdp" type="number" min="0" max="1024" step="1"  class="form-control" name="tdp" placeholder="TDP" v-model="processor.tdp">
+                                <input id="tdp" type="number" min="0" class="form-control" name="tdp" placeholder="TDP" v-model="processor.tdp">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -143,7 +143,7 @@
                             <label for="lithography">Lithography <small class="text-muted">(nm)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-compress"></i></span>
-                                <input id="lithography" type="number" min="0" max="1024" step="1"  class="form-control" name="lithography" placeholder="Lithography" v-model="processor.lithography">
+                                <input id="lithography" type="number" min="0" class="form-control" name="lithography" placeholder="Lithography" v-model="processor.lithography">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -152,10 +152,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group form-group-lg">
-                            <label for="max-pci-express-lanes">Max PCI Express Lanes </label>
+                            <label for="max-pci-express-lanes">Max PCI Express Lanes</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="max-pci-express-lanes" type="number" min="0" max="2048" step="2"  class="form-control" name="max_pci_express_lanes" placeholder="Max PCI Express Lanes" v-model="processor.maxPciExpressLanes">
+                                <input id="max-pci-express-lanes" type="number" min="0" class="form-control" name="max_pci_express_lanes" placeholder="Max PCI Express Lanes" v-model="processor.maxPciExpressLanes">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -177,10 +177,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-lg">
-                            <label for="max-memory-support">Max Memory Supported <small class="text-muted">(GBs)</small></label>
+                            <label for="max-memory-support">Max Memory Supported <small class="text-muted">(MBs)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="max-memory-support" type="number" min="0" max="2048" step="2"  class="form-control" name="max_memory_support" placeholder="Max Memory Support" v-model="processor.maxMemorySupported">
+                                <input id="max-memory-support" type="number" min="0" class="form-control" name="max_memory_support" placeholder="Max Memory Support" v-model="processor.maxMemorySupported">
                             </div>
                             <!-- inline error -->
                         </div>
@@ -241,22 +241,14 @@
                 postData: function() {
                     var vm = this;
 
-                    var data = this.processor;
+                    var data = vm.processor;
 
-                    // $.post(routes['components.processors.new.post'], function(data) {
-                    //     // TODO: success message and redirect
-                    // }, function() {
-                    //     // TODO: validation messages / alerts
-                    // })
-
-                    $.ajax({
-                        url: routes['components.processors.new.post'],
-                        type: "POST",
-                        data: data,
-                        dataType: 'json', // needed in order to no cause data sending error
-                        success: function(response){
-                            console.log("yes response") // TODO: set up method in app to process json post requests properly
-                        }
+                    $.post(routes['components.processors.new.post'], data, function(response, status) {
+                        alert("success");
+                        console.log(response);
+                    }).fail(function(response, status) {
+                        alert("fail");
+                        console.log(response.responseJSON);
                     });
                 }
             }
