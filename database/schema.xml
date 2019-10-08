@@ -1,61 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name="mysql" defaultIdMethod="native" namespace="App\Models">
     <table name="cpu" idMethod="native">
-        <column name="id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" type="VARCHAR" size="255" required="true"/>
-        <column name="manufacturer_id" type="INTEGER" size="8" required="true"/>
-        <column name="core_count" type="INTEGER" size="8" required="true"/>
-        <column name="thread_count" type="INTEGER" size="8" required="true"/>
-        <column name="base_clock" type="DOUBLE" size="6" scale="2" required="true"/>
-        <column name="boost_clock" type="DOUBLE" size="6" scale="2"/>
-        <column name="tdp" type="INTEGER" size="8"/>
-        <column name="data_width" type="INTEGER" size="8"/>
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="manufacturer_id" type="INTEGER" size="7" required="true" />
+        <column name="cpu_socket_id" type="INTEGER" size="7" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <column name="core_count" type="INTEGER" size="7" required="true" />
+        <column name="thread_count" type="INTEGER" size="7" required="true" />
+        <column name="base_clock" type="INTEGER" size="7" required="true" />
+        <column name="boost_clock" type="INTEGER" size="7" />
+        <column name="l3_cache" type="INTEGER" size="7" />
+        <column name="tdp" type="INTEGER" size="8" />
         <behavior name="timestampable" />
         <foreign-key foreignTable="manufacturer">
-            <reference local="manufacturer_id" foreign="id"/>
+            <reference local="manufacturer_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="cpu_socket">
+            <reference local="cpu_socket_id" foreign="id" />
+        </foreign-key>
+    </table>
+    <table name="ram" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="manufacturer_id" type="INTEGER" size="8" required="true" />
+        <column name="memory_type_id" type="INTEGER" size="8" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <column name="clock_speed" type="INTEGER" size="8"  required="true" />
+        <column name="capacity" type="INTEGER" size="8" required="true" />
+        <behavior name="timestampable" />
+        <foreign-key foreignTable="manufacturer">
+            <reference local="manufacturer_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="memory_type">
+            <reference local="memory_type_id" foreign="id" />
+        </foreign-key>
+    </table>
+    <table name="motherboard" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="manufacturer_id" type="INTEGER" size="8" required="true" />
+        <column name="memory_type_id" type="INTEGER" size="8" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <behavior name="timestampable" />
+        <foreign-key foreignTable="manufacturer">
+            <reference local="manufacturer_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="memory_type">
+            <reference local="memory_type_id" foreign="id" />
         </foreign-key>
     </table>
     <table name="gpu" idMethod="native">
-        <column name="id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" type="VARCHAR" size="255" required="true"/>
-        <column name="manufacturer_id" type="INTEGER" size="8" required="true"/>
-        <column name="core_count" type="INTEGER" size="8" required="true"/>
-        <column name="base_clock" type="DOUBLE" size="6" scale="2" required="true"/>
-        <column name="boost_clock" type="DOUBLE" size="6" scale="2"/>
-        <column name="tdp" type="INTEGER" size="8"/>
-        <column name="cuda_core_count" type="INTEGER" size="255"/>
-        <column name="memory_capacity" type="DOUBLE" size="6" scale="2"/>
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="manufacturer_id" type="INTEGER" size="8" required="true" />
+        <column name="memory_type_id" type="INTEGER" size="8" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <column name="base_clock" type="INTEGER" size="8"  required="true" />
+        <column name="boost_clock" type="INTEGER" size="8" />
+        <column name="memory_capacity" type="INTEGER" size="6" required="true" />
+        <column name="tdp" type="INTEGER" size="8" />
         <behavior name="timestampable" />
         <foreign-key foreignTable="manufacturer">
-            <reference local="manufacturer_id" foreign="id"/>
+            <reference local="manufacturer_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="memory_type">
+            <reference local="memory_type_id" foreign="id" />
         </foreign-key>
     </table>
-    <table name="manufacturer" idMethod="native">
-        <column name="id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" type="VARCHAR" size="255" required="true"/>
-        <column name="created_at" type="TIMESTAMP"/>
-        <column name="updated_at" type="TIMESTAMP"/>
+    <table name="memory_type" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <behavior name="timestampable" />
     </table>
-    <table name="password_resets" idMethod="native" phpName="PasswordResets">
-        <column name="email" type="VARCHAR" size="255" required="true"/>
-        <column name="token" type="VARCHAR" size="255" required="true"/>
-        <column name="created_at" type="TIMESTAMP"/>
+    <table name="cpu_socket" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="manufacturer" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <behavior name="timestampable" />
+    </table>
+<!--  auth tables  -->
+    <table name="password_resets" idMethod="native">
+        <column name="email" type="VARCHAR" size="255" required="true" />
+        <column name="token" type="VARCHAR" size="255" required="true" />
+        <column name="created_at" type="TIMESTAMP" />
         <index name="password_resets_email_index">
-            <index-column name="email"/>
+            <index-column name="email" />
         </index>
     </table>
-    <table name="users" phpName="User" idMethod="native">
-        <column name="id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" type="VARCHAR" size="255" required="true"/>
-        <column name="email" type="VARCHAR" size="255" required="true"/>
-        <column name="password" type="VARCHAR" size="255" required="true"/>
-        <column name="remember_token" type="VARCHAR" size="100"/>
+    <table name="users" idMethod="native">
+        <column name="id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <column name="email" type="VARCHAR" size="255" required="true" />
+        <column name="password" type="VARCHAR" size="255" required="true" />
+        <column name="remember_token" type="VARCHAR" size="100" />
         <behavior name="timestampable" />
         <unique name="users_email_unique">
-            <unique-column name="email"/>
+            <unique-column name="email" />
         </unique>
     </table>
     <vendor type="mysql">
-        <parameter name="Engine" value="InnoDB"/>
+        <parameter name="Engine" value="InnoDB" />
     </vendor>
 </database>
