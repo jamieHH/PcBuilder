@@ -6,51 +6,27 @@
         <div class="panel-heading">
             <h3 class="panel-title"><b><i class="fa fa-microchip"></i>Processors</b></h3>
         </div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Core Count</th>
-                    <th>Base Clock</th>
-                    <th>Boost Clock</th>
-                    <th>Thermal Design Power</th>
-                    <th>Select</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Intel Core i7 6700K</td>
-                    <td>4</td>
-                    <td>4.00</td>
-                    <td>4.20</td>
-                    <td>91</td>
-                    <td>
-                        <i class="fa fa-check-square-o"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Intel Core i7 7700k</td>
-                    <td>4</td>
-                    <td>4.20</td>
-                    <td>4.50</td>
-                    <td>91</td>
-                    <td>
-                        <i class="fa fa-square-o"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ryzen 5 1500X</td>
-                    <td>4</td>
-                    <td>3.50</td>
-                    <td>3.70</td>
-                    <td>65</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
+        <div class="panel-body" id="processors-page">
+            <div class="row" v-if="pageAlert">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">@{{ pageAlert }}</h4>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th v-for="header in datatable.headers">@{{ header }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="row in datatable.rows">
+                        <td v-for="value in row">@{{ value }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12">
@@ -62,4 +38,40 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('page-javascript')
+    <script>
+        var routes = [];
+        routes['components.processors.datatable'] = '{{ route('components.processors.datatable') }}';
+
+        $(document).ready(function() {
+            window.vue = new Vue({
+                el: '#processors-page',
+                mounted: function() {
+                    this.getData();
+                },
+                data: {
+                    datatable: {
+                        headers: [],
+                        rows: []
+                    },
+                    pageAlert: null
+                },
+                methods: {
+                    getData: function() {
+                        var vm = this;
+
+                        $.get(routes['components.processors.datatable'], function(response, status) {
+                            vm.datatable.headers = response.headers;
+                            vm.datatable.rows = response.rows;
+
+                        }).fail(function(response, status) {
+                            vm.pageAlert = response.responseJSON.message;
+                        });
+                    }
+                }
+            });
+        })
+    </script>
 @endsection

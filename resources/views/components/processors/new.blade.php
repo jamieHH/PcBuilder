@@ -10,14 +10,13 @@
             <form id="add-new-processor">
                 {{ csrf_field() }}
 
-                <div class="row">
+                <div class="row" v-if="pageAlert">
                     <div class="col-md-12">
-                        <div class="alert alert-danger" role="alert" v-if="message">
-                            <h4 class="alert-heading">Get and display Message</h4>
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">@{{ pageAlert }}</h4>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('name') }">
@@ -29,7 +28,7 @@
 
                             <span class="help-block" v-if="hasError('name')"> <!-- inline error -->
                                 <ul v-for="error in errors.name">
-                                    <li>{ error }</li>
+                                    <li>@{{ error }}</li>
                                 </ul>
                             </span>
                         </div>
@@ -202,21 +201,18 @@
                     "supported_memory_type_ids": [],
                 },
                 errors: {},
-                message: null
+                pageAlert: null
             },
             methods: {
                 postData: function() {
                     var vm = this;
-
                     var data = vm.processor;
 
                     $.post(routes['components.processors.new.post'], data, function(response, status) {
-                        alert("success");
-                        console.log(response);
+                        alert("redirect to table page with pageAlert");
                     }).fail(function(response, status) {
-                        console.log(response.responseJSON);
                         vm.errors = response.responseJSON.errors;
-                        vm.message = response.responseJSON.message;
+                        vm.pageAlert = response.responseJSON.message;
                     });
                 },
                 hasError: function(fieldName) {

@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\Controller;
 use App\Http\Requests\Web\Components\Processors\NewProcessorRequest;
 use App\Http\Requests\Web\Components\Processors\ProcessorRequest;
 use App\Models\Cpu;
+use App\Models\CpuQuery;
 use Propel\Runtime\Exception\PropelException;
 use View;
 
@@ -21,7 +22,26 @@ class ProcessorsController extends Controller
 
     public function datatable(ProcessorRequest $request)
     {
-        return response(['data' => ['processors' => ['processor1' => 'details', 'processor2' => 'details']]], 200);
+        $headers = ['Name', 'CoreCount', 'BaseClock', 'BoostClock', 'TDP', 'Edit'];
+        $rows = [];
+
+        $cpus = CpuQuery::create()->find();
+
+        foreach ($cpus as $cpu) {
+            $row = [];
+            foreach ($headers as $header) {
+                if ($header != "Edit") {
+                    $fName = sprintf('get%s', $header);
+                    array_push($row, $cpu->$fName());
+                } else {
+                    array_push($row, $cpu->getId());
+                }
+            }
+
+            array_push($rows, $row);
+        }
+
+        return response(['headers' => $headers, 'rows' => $rows], 200);
     }
 
     public function create(NewProcessorRequest $request)
