@@ -21,7 +21,7 @@ class ProcessorsController extends Controller
 
     public function datatable(ProcessorRequest $request)
     {
-        return response()->json(['data' => ['processors' => ['processor1' => 'details', 'processor2' => 'details']]]);
+        return response(['data' => ['processors' => ['processor1' => 'details', 'processor2' => 'details']]], 200);
     }
 
     public function create(NewProcessorRequest $request)
@@ -32,16 +32,16 @@ class ProcessorsController extends Controller
                 ->setCpuSocket($request->getCpuSocket())
                 ->setName($request->get('name'))
                 ->setCoreCount($request->get('core_count'))
-                ->setThreadCount($request->get('thresd_count'))
+                ->setThreadCount($request->get('thread_count'))
                 ->setBaseClock($request->get('base_clock'))
                 ->setBoostClock($request->get('boost_clock'))
                 ->setL3Cache($request->get('l3_cache'))
                 ->setTdp($request->get('tdp'))
                 ->save();
         } catch (PropelException $e) {
-            return response('json', 500)->json(['message' => $e->getMessage()]);
+            return response(['message' => $e->getMessage()], 500);
         }
 
-        return response()->json(['message', 'New Processor added successfully']);
+        return response(['message', 'New Processor added successfully'], 200);
     }
 }

@@ -24,11 +24,13 @@ class NewProcessorRequest extends Request
         ];
     }
 
-    public function getManufacturer() {
+    public function getManufacturer()
+    {
         return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
     }
 
-    public function getCpuSocket() {
-        return CpuSocketQuery::create()->findOneById($this->get('manufacturer_id'));
+    public function getCpuSocket()
+    {
+        return CpuSocketQuery::create()->findOneById($this->get('cpu_socket_id'));
     }
 }
