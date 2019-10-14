@@ -7,7 +7,7 @@
             <h3 class="panel-title"><b><i class="fa fa-microchip"></i>Processors</b></h3>
         </div>
         <div class="panel-body" id="processors-page">
-            <div class="row" v-if="pageAlert">
+            <div class="row" style="display: none;" v-show="pageAlert">
                 <div class="col-md-12">
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">@{{ pageAlert }}</h4>
