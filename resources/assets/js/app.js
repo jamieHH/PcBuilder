@@ -29,7 +29,7 @@ $.ajaxSetup({
 //     el: '#app'
 // });
 
-// window.app = {
-//     routes: {},
-//     variables: {},
-// };
+window.app = {
+    routes: {},
+    pageVariables: {}
+};

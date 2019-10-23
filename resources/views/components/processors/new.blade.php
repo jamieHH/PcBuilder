@@ -216,8 +216,7 @@
 
 @section('page-javascript')
 <script>
-    var routes = [];
-    routes['components.processors.new.post'] = '{{ route('components.processors.new.post') }}';
+    app.routes['components.processors.new.post'] = '{{ route('components.processors.new.post') }}';
 
     $(document).ready(function() {
         window.vue = new Vue({
@@ -247,7 +246,7 @@
                     var vm = this;
                     var data = vm.processor;
 
-                    $.post(routes['components.processors.new.post'], data, function(response, status) {
+                    $.post(app.routes['components.processors.new.post'], data, function(response, status) {
                         window.location = response.redirect;
                     }).fail(function(response, status) {
                         vm.errors = response.responseJSON.errors;

@@ -42,7 +42,7 @@ class ProcessorsController extends Controller
             array_push($rows, $row);
         }
 
-        return response([
+        return response()->json([
             'headers' => $headers, 'rows' => $rows
         ], 200);
     }
@@ -65,8 +65,9 @@ class ProcessorsController extends Controller
             return response(['message' => $e->getMessage()], 500);
         }
 
-        return response([
-            'redirect' => route('components.processors')
+        return response()->json([
+            'redirect' => route('components.processors'),
+            'message' => 'New Processor added successfully'
         ], 200);
     }
 }

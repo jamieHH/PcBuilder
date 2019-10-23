@@ -42,8 +42,7 @@
 
 @section('page-javascript')
     <script>
-        var routes = [];
-        routes['components.processors.datatable'] = '{{ route('components.processors.datatable') }}';
+        app.routes['components.processors.datatable'] = '{{ route('components.processors.datatable') }}';
 
         $(document).ready(function() {
             window.vue = new Vue({
@@ -62,7 +61,7 @@
                     getData: function() {
                         var vm = this;
 
-                        $.get(routes['components.processors.datatable'], function(response, status) {
+                        $.get(app.routes['components.processors.datatable'], function(response, status) {
                             vm.datatable.headers = response.headers;
                             vm.datatable.rows = response.rows;
 
