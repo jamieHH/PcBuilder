@@ -16,6 +16,9 @@ Auth::routes();
 Route::namespace('Web')->group(function() {
     Route::namespace('Components')->prefix('components')->group(function() {
         Route::namespace('Processors')->prefix('processors')->group(function() {
+            Route::get('/processor/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
+            Route::post('/processor/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
+
             Route::get('/datatable', 'ProcessorsController@datatable')->name('components.processors.datatable');
             Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
             Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');

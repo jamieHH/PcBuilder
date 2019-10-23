@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="row in datatable.rows">
-                        <td v-for="value in row">@{{ value }}</td>
+                        <td v-for="value in row"><div v-html="value"></div></td>
                     </tr>
                 </tbody>
             </table>

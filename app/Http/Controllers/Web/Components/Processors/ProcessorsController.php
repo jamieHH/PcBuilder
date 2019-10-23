@@ -22,10 +22,9 @@ class ProcessorsController extends Controller
 
     public function datatable(ProcessorRequest $request)
     {
+        $cpus = CpuQuery::create()->find();
         $headers = ['Name', 'CoreCount', 'BaseClock', 'BoostClock', 'TDP', 'Edit'];
         $rows = [];
-
-        $cpus = CpuQuery::create()->find();
 
         foreach ($cpus as $cpu) {
             $row = [];
@@ -34,14 +33,18 @@ class ProcessorsController extends Controller
                     $fName = sprintf('get%s', $header);
                     array_push($row, $cpu->$fName());
                 } else {
-                    array_push($row, $cpu->getId());
+                    $href = route('components.processors.processor.edit', ['id' => $cpu->getId()]);
+                    $html = sprintf('<a href="%s">Edit</a>', $href);
+                    array_push($row, $html);
                 }
             }
 
             array_push($rows, $row);
         }
 
-        return response(['headers' => $headers, 'rows' => $rows], 200);
+        return response([
+            'headers' => $headers, 'rows' => $rows
+        ], 200);
     }
 
     public function create(NewProcessorRequest $request)
@@ -62,6 +65,8 @@ class ProcessorsController extends Controller
             return response(['message' => $e->getMessage()], 500);
         }
 
-        return response(['message', 'New Processor added successfully'], 200);
+        return response([
+            'redirect' => route('components.processors')
+        ], 200);
     }
 }

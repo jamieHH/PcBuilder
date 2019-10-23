@@ -248,7 +248,7 @@
                     var data = vm.processor;
 
                     $.post(routes['components.processors.new.post'], data, function(response, status) {
-                        alert("redirect to table page with pageAlert");
+                        window.location = response.redirect;
                     }).fail(function(response, status) {
                         vm.errors = response.responseJSON.errors;
                         vm.pageAlert = response.responseJSON.message;
