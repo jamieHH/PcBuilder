@@ -10,6 +10,7 @@
         <column name="base_clock" type="INTEGER" size="7" required="true" />
         <column name="boost_clock" type="INTEGER" size="7" />
         <column name="l3_cache" type="INTEGER" size="7" />
+        <column name="lithography" type="VARCHAR" size="255" required="true" />
         <column name="tdp" type="INTEGER" size="8" />
         <behavior name="timestampable" />
         <foreign-key foreignTable="manufacturer">
