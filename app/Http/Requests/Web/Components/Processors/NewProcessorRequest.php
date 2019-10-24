@@ -21,6 +21,7 @@ class NewProcessorRequest extends Request
             'thread_count' => 'required|numeric',
             'base_clock' => 'required|numeric',
             'l3_cache' => 'required|numeric',
+            'lithography' => 'numeric',
         ];
     }
 

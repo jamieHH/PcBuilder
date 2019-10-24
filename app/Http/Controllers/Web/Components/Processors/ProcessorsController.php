@@ -60,6 +60,7 @@ class ProcessorsController extends Controller
                 ->setBoostClock($request->get('boost_clock'))
                 ->setL3Cache($request->get('l3_cache'))
                 ->setTdp($request->get('tdp'))
+                ->setLithography($request->get('lithography'))
                 ->save();
         } catch (PropelException $e) {
             return response(['message' => $e->getMessage()], 500);
