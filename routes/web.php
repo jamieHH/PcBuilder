@@ -16,6 +16,7 @@ Auth::routes();
 Route::namespace('Web')->group(function() {
     Route::namespace('Components')->prefix('components')->group(function() {
         Route::namespace('Processors')->prefix('processors')->group(function() {
+            Route::get('/processor/{id}/details', 'ProcessorController@details')->name('components.processors.processor.details');
             Route::get('/processor/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
             Route::post('/processor/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
 

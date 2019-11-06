@@ -1,6 +1,9 @@
 <?php namespace App\Http\Requests\Web\Components\Processors;
 
 use App\Http\Requests\Web\Components\Request;
+use App\Models\CpuQuery;
+use App\Models\CpuSocketQuery;
+use App\Models\ManufacturerQuery;
 
 class ProcessorRequest extends Request
 {
@@ -14,8 +17,18 @@ class ProcessorRequest extends Request
         return [];
     }
 
-    public function getProcessor()
+    public function getManufacturer()
     {
-        // TODO: get requested processor from database
+        return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
+    }
+
+    public function getCpuSocket()
+    {
+        return CpuSocketQuery::create()->findOneById($this->get('cpu_socket_id'));
+    }
+
+    public function getCpu()
+    {
+        return CpuQuery::create()->findOneById($this->route('id'));
     }
 }

@@ -1,24 +1,60 @@
 <?php namespace App\Http\Controllers\Web\Components\Processors;
 
 use App\Http\Controllers\Web\Controller;
-use App\Http\Requests\Web\Components\Processors\NewProcessorRequest;
 use App\Http\Requests\Web\Components\Processors\ProcessorRequest;
+use App\Http\Requests\Web\Components\Processors\UpdateProcessorRequest;
+use Propel\Runtime\Exception\PropelException;
 use View;
 
 class ProcessorController extends Controller
 {
-    public function edit()
+    public function edit(ProcessorRequest $request, $id)
     {
-        return View::make('components.processors.edit');
+        return View::make('components.processors.edit', ['id' => $id]);
     }
 
-    public function update(NewProcessorRequest $request)
+    public function details(ProcessorRequest $request)
     {
-        return response()->json(['message', 'Processor updated successfully']);
+        $cpu = $request->getCpu();
+        return response()->json([
+            "processor" => [
+                "id" => $cpu->getId(),
+                "name" => $cpu->getName(),
+                "manufacturer_id" => $cpu->getManufacturerId(),
+                "cpu_socket_id" => $cpu->getCpuSocketId(),
+                "base_clock" => $cpu->getBaseClock(),
+                "boost_clock" => $cpu->getBoostClock(),
+                "core_count" => $cpu->getCoreCount(),
+                "thread_count" => $cpu->getThreadCount(),
+                "l3_cache" => $cpu->getL3Cache(),
+                "tdp" => $cpu->getTdp(),
+                "lithography" => $cpu->getLithography(),
+            ]
+        ], 200);
     }
 
-    public function json(ProcessorRequest $request)
+    public function update(UpdateProcessorRequest $request)
     {
-        return response()->json(['data' => ['processor' => 'details']]);
+        try {
+            $cpu = $request->getCpu();
+            $cpu->setManufacturer($request->getManufacturer())
+                ->setCpuSocket($request->getCpuSocket())
+                ->setName($request->get('name'))
+                ->setCoreCount($request->get('core_count'))
+                ->setThreadCount($request->get('thread_count'))
+                ->setBaseClock($request->get('base_clock'))
+                ->setBoostClock($request->get('boost_clock'))
+                ->setL3Cache($request->get('l3_cache'))
+                ->setTdp($request->get('tdp'))
+                ->setLithography($request->get('lithography'))
+                ->save();
+        } catch (PropelException $e) {
+            return response(['message' => $e->getMessage()], 500);
+        }
+
+        return response()->json([
+            'redirect' => route('components.processors'),
+            'message' => 'Processor updated successfully'
+        ], 200);
     }
 }
