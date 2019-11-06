@@ -7,13 +7,14 @@
             <h3 class="panel-title"><b><i class="fa fa-microchip"></i>Processors</b></h3>
         </div>
         <div class="panel-body" id="processors-page">
-            <div class="row" style="display: none;" v-show="pageAlert">
-                <div class="col-md-12">
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">@{{ pageAlert }}</h4>
-                    </div>
+{{--            <div class="alert alert-danger" role="alert" style="display: none;" v-show="pageAlert">--}}
+{{--                <h4 class="alert-heading">@{{ pageAlert }}</h4>--}}
+{{--            </div>--}}
+            @if (session('message'))
+                <div class="alert alert-success">
+                    <h4 class="alert-heading">{{ session('message') }}</h4>
                 </div>
-            </div>
+            @endif
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

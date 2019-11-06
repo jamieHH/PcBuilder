@@ -9,13 +9,8 @@
         <div class="panel-body">
             <form id="edit-processor">
                 {{ csrf_field() }}
-
-                <div class="row" style="display: none;" v-show="pageAlert">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger" role="alert">
-                            <h4 class="alert-heading">@{{ pageAlert }}</h4>
-                        </div>
-                    </div>
+                <div class="alert alert-danger" role="alert" style="display: none;" v-show="pageAlert">
+                    <h4 class="alert-heading">@{{ pageAlert }}</h4>
                 </div>
                 <div class="row">
                     <div class="col-md-6">

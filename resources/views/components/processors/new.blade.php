@@ -7,15 +7,10 @@
             <h3 class="panel-title"><b><i class="fa fa-plus"></i>Add New Processor</b></h3>
         </div>
         <div class="panel-body">
-            <form id="add-new-processor">
+            <form id="add-processor">
                 {{ csrf_field() }}
-
-                <div class="row" style="display: none;" v-show="pageAlert">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger" role="alert">
-                            <h4 class="alert-heading">@{{ pageAlert }}</h4>
-                        </div>
-                    </div>
+                <div class="alert alert-danger" role="alert" style="display: none;" v-show="pageAlert">
+                    <h4 class="alert-heading">@{{ pageAlert }}</h4>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -220,7 +215,7 @@
 
     $(document).ready(function() {
         window.vue = new Vue({
-            el: '#add-new-processor',
+            el: '#add-processor',
             mounted: function() {
 
             },
