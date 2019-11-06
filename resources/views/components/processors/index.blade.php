@@ -7,14 +7,9 @@
             <h3 class="panel-title"><b><i class="fa fa-microchip"></i>Processors</b></h3>
         </div>
         <div class="panel-body" id="processors-page">
-{{--            <div class="alert alert-danger" role="alert" style="display: none;" v-show="pageAlert">--}}
-{{--                <h4 class="alert-heading">@{{ pageAlert }}</h4>--}}
-{{--            </div>--}}
-            @if (session('message'))
-                <div class="alert alert-success">
-                    <h4 class="alert-heading">{{ session('message') }}</h4>
-                </div>
-            @endif
+            <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
+            </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -56,7 +51,10 @@
                         headers: [],
                         rows: []
                     },
-                    pageAlert: null
+                    pageAlert: {
+                        'type': '{{ session('pageAlert')['type'] }}',
+                        'message': '{{ session('pageAlert')['message'] }}'
+                    }
                 },
                 methods: {
                     getData: function() {
@@ -67,7 +65,10 @@
                             vm.datatable.rows = response.rows;
 
                         }).fail(function(response, status) {
-                            vm.pageAlert = response.responseJSON.message;
+                            vm.pageAlert = {
+                                'type': 'danger',
+                                'message': response.responseJSON.message
+                            }
                         });
                     }
                 }

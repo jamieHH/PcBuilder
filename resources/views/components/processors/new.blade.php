@@ -9,8 +9,8 @@
         <div class="panel-body">
             <form id="add-processor">
                 {{ csrf_field() }}
-                <div class="alert alert-danger" role="alert" style="display: none;" v-show="pageAlert">
-                    <h4 class="alert-heading">@{{ pageAlert }}</h4>
+                <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                    <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -234,18 +234,29 @@
                     "supported_memory_type_ids": [],
                 },
                 errors: {},
-                pageAlert: null
+                pageAlert: {
+                    'type': '{{ session('pageAlert')['type'] }}',
+                    'message': '{{ session('pageAlert')['message'] }}'
+                }
             },
             methods: {
                 postData: function() {
                     var vm = this;
                     var data = vm.processor;
 
+                    vm.errors = {};
+                    vm.pageAlert.message = null;
+
                     $.post(app.routes['components.processors.new.post'], data, function(response, status) {
                         window.location = response.redirect;
                     }).fail(function(response, status) {
-                        vm.errors = response.responseJSON.errors;
-                        vm.pageAlert = response.responseJSON.message;
+                        if (response.responseJSON.hasOwnProperty('errors')) {
+                            vm.errors = response.responseJSON.errors;
+                        }
+                        vm.pageAlert = {
+                            'type': 'danger',
+                            'message': response.responseJSON.message
+                        }
                     });
                 },
                 hasError: function(fieldName) {

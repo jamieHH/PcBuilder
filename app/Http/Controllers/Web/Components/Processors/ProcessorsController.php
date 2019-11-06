@@ -66,7 +66,10 @@ class ProcessorsController extends Controller
             return response(['message' => $e->getMessage()], 500);
         }
 
-        $request->session()->flash('message', 'New Processor added successfully');
+        session()->flash('pageAlert', [
+            'type' => 'success',
+            'message' => 'New Processor added successfully'
+        ]);
 
         return response()->json([
             'redirect' => route('components.processors'),
