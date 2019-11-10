@@ -10,7 +10,7 @@
             <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
                 <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
                         <th v-for="header in datatable.headers">@{{ header }}</th>
