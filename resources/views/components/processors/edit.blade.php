@@ -7,9 +7,10 @@
             <h3 class="panel-title"><b><i class="fa fa-plus"></i>Edit Processor</b></h3>
         </div>
         <div class="panel-body">
-            <form id="edit-processor">
+            <form id="edit-form">
                 {{ csrf_field() }}
-                <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
                 </div>
                 <div class="row">
@@ -240,8 +241,8 @@
         app.routes['components.processors.processor.delete.post'] = '{{ route('components.processors.processor.delete.post', ['id' => $id]) }}';
 
         $(document).ready(function() {
-            app.pageVariables.form = new Vue({
-                el: '#edit-processor',
+            app.pageVariables.editForm = new Vue({
+                el: '#edit-form',
                 mounted: function() {
                     this.getData();
                 },
@@ -316,7 +317,7 @@
                 },
                 methods: {
                     postDelete: function() {
-                        let vm = app.pageVariables.form;
+                        let vm = app.pageVariables.editForm;
                         let data = vm.processor;
 
                         $.post(app.routes['components.processors.processor.delete.post'], data, function(response, status) {

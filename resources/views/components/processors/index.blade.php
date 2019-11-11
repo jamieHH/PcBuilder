@@ -7,7 +7,8 @@
             <h3 class="panel-title"><b><i class="fa fa-microchip"></i>Processors</b></h3>
         </div>
         <div class="panel-body" id="processors-page">
-            <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+            <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
             </div>
             <table class="table table-striped table-hover table-bordered">

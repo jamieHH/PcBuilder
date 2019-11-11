@@ -7,9 +7,10 @@
             <h3 class="panel-title"><b><i class="fa fa-plus"></i>Add New Processor</b></h3>
         </div>
         <div class="panel-body">
-            <form id="add-processor">
+            <form id="new-form">
                 {{ csrf_field() }}
-                <div class="alert" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
                 </div>
                 <div class="row">
@@ -215,7 +216,7 @@
 
     $(document).ready(function() {
         app.pageVariables.form = new Vue({
-            el: '#add-processor',
+            el: '#new-form',
             mounted: function() {
                 this.getData();
             },
