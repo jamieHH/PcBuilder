@@ -214,10 +214,10 @@
     app.routes['components.processors.new.post'] = '{{ route('components.processors.new.post') }}';
 
     $(document).ready(function() {
-        window.vue = new Vue({
+        app.pageVariables.form = new Vue({
             el: '#add-processor',
             mounted: function() {
-
+                this.getData();
             },
             data: {
                 processor: {
@@ -240,9 +240,12 @@
                 }
             },
             methods: {
+                getData: function() {
+                    // TODO: get selection data!
+                },
                 postData: function() {
-                    var vm = this;
-                    var data = vm.processor;
+                    let vm = this;
+                    let data = vm.processor;
 
                     vm.errors = {};
                     vm.pageAlert.message = null;

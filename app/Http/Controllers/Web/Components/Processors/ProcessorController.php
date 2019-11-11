@@ -62,4 +62,23 @@ class ProcessorController extends Controller
             'message' => 'Processor updated successfully'
         ], 200);
     }
+
+    public function delete(ProcessorRequest $request)
+    {
+        try {
+            $request->getCpu()->delete();
+        } catch (PropelException $e) {
+            return response(['message' => $e->getMessage()], 500);
+        }
+
+        session()->flash('pageAlert', [
+            'type' => 'success',
+            'message' => 'Processor deleted successfully'
+        ]);
+
+        return response()->json([
+            'redirect' => route('components.processors'),
+            'message' => 'Processor deleted successfully'
+        ], 200);
+    }
 }

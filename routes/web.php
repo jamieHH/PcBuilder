@@ -19,6 +19,7 @@ Route::namespace('Web')->group(function() {
             Route::get('/processor/{id}/details', 'ProcessorController@details')->name('components.processors.processor.details');
             Route::get('/processor/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
             Route::post('/processor/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
+            Route::post('/processor/{id}/delete', 'ProcessorController@delete')->name('components.processors.processor.delete.post');
 
             Route::get('/datatable', 'ProcessorsController@datatable')->name('components.processors.datatable');
             Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');

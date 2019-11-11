@@ -198,7 +198,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-danger" v-on:click.prevent="postDelete()">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletion-modal">
                             <i class="fa fa-trash"></i> Delete
                         </button>
                         <button type="submit" class="btn btn-primary pull-right" v-on:click.prevent="postData()">
@@ -212,79 +212,127 @@
 </div>
 @endsection
 
+@section('page-modals')
+    <!-- Modal -->
+    <div class="modal fade" id="deletion-modal" tabindex="-1" role="dialog" aria-labelledby="deleteItemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="deleteItemModalLabel">Delete Processor</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this processor?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <button id="delete-processor-btn" type="button" class="btn btn-danger" v-on:click.prevent="postDelete()">Delete Processor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('page-javascript')
-<script>
-    app.routes['components.processors.processor.edit.post'] = '{{ route('components.processors.processor.edit.post', ['id' => $id]) }}';
-    app.routes['components.processors.processor.details'] = '{{ route('components.processors.processor.details', ['id' => $id]) }}';
+    <script>
+        app.routes['components.processors.processor.details'] = '{{ route('components.processors.processor.details', ['id' => $id]) }}';
+        app.routes['components.processors.processor.edit.post'] = '{{ route('components.processors.processor.edit.post', ['id' => $id]) }}';
+        app.routes['components.processors.processor.delete.post'] = '{{ route('components.processors.processor.delete.post', ['id' => $id]) }}';
 
-    $(document).ready(function() {
-        window.vue = new Vue({
-            el: '#edit-processor',
-            mounted: function() {
-                this.getData();
-            },
-            data: {
-                processor: {
-                    "id": null,
-                    "name": null,
-                    "manufacturer_id": null,
-                    "cpu_socket_id": null,
-                    "base_clock": null,
-                    "boost_clock": null,
-                    "core_count": null,
-                    "thread_count": null,
-                    "l3_cache": null,
-                    "tdp": null,
-                    "lithography": null,
-                    "supported_memory_type_ids": [],
+        $(document).ready(function() {
+            app.pageVariables.form = new Vue({
+                el: '#edit-processor',
+                mounted: function() {
+                    this.getData();
                 },
-                errors: {},
-                pageAlert: {
-                    'type': '{{ session('pageAlert')['type'] }}',
-                    'message': '{{ session('pageAlert')['message'] }}'
+                data: {
+                    processor: {
+                        "id": null,
+                        "name": null,
+                        "manufacturer_id": null,
+                        "cpu_socket_id": null,
+                        "base_clock": null,
+                        "boost_clock": null,
+                        "core_count": null,
+                        "thread_count": null,
+                        "l3_cache": null,
+                        "tdp": null,
+                        "lithography": null,
+                        "supported_memory_type_ids": [],
+                    },
+                    errors: {},
+                    pageAlert: {
+                        'type': '{{ session('pageAlert')['type'] }}',
+                        'message': '{{ session('pageAlert')['message'] }}'
+                    }
+                },
+                methods: {
+                    getData: function() {
+                        let vm = this;
+
+                        // TODO: get selection data!
+
+                        $.get(app.routes['components.processors.processor.details'], function(response, status) {
+                            vm.processor = response.processor;
+                        }).fail(function(response, status) {
+                            vm.pageAlert = response.responseJSON.message;
+                        });
+                    },
+                    postData: function() {
+                        let vm = this;
+                        let data = vm.processor;
+
+                        vm.errors = {};
+                        vm.pageAlert.message = null;
+
+                        $.post(app.routes['components.processors.processor.edit.post'], data, function(response, status) {
+                            vm.pageAlert = {
+                                'type': 'success',
+                                'message': response.message
+                            }
+                        }).fail(function(response, status) {
+                            if (response.responseJSON.hasOwnProperty('errors')) {
+                                vm.errors = response.responseJSON.errors;
+                            }
+                            vm.pageAlert = {
+                                'type': 'danger',
+                                'message': response.responseJSON.message
+                            }
+                        });
+                    },
+                    hasError: function(fieldName) {
+                        return this.errors.hasOwnProperty(fieldName);
+                    }
                 }
-            },
-            methods: {
-                getData: function() {
-                    var vm = this;
+            });
 
-                    $.get(app.routes['components.processors.processor.details'], function(response, status) {
-                        vm.processor = response.processor;
+            app.pageVariables.deletionModal = new Vue({
+                el: '#deletion-modal',
+                mounted: function() {
 
-                    }).fail(function(response, status) {
-                        vm.pageAlert = response.responseJSON.message;
-                    });
                 },
-                postData: function() {
-                    var vm = this;
-                    var data = vm.processor;
+                data: {
 
-                    vm.errors = {};
-                    vm.pageAlert.message = null;
+                },
+                methods: {
+                    postDelete: function() {
+                        let vm = app.pageVariables.form;
+                        let data = vm.processor;
 
-                    $.post(app.routes['components.processors.processor.edit.post'], data, function(response, status) {
-                        vm.pageAlert = {
-                            'type': 'success',
-                            'message': response.message
-                        }
-                    }).fail(function(response, status) {
-                        if (response.responseJSON.hasOwnProperty('errors')) {
-                            vm.errors = response.responseJSON.errors;
-                        }
-                        vm.pageAlert = {
-                            'type': 'danger',
-                            'message': response.responseJSON.message
-                        }
-                    });
-                },
-                postDelete: function() {
-                    // TODO: delete method
-                },
-                hasError: function(fieldName) {
-                    return this.errors.hasOwnProperty(fieldName);
+                        $.post(app.routes['components.processors.processor.delete.post'], data, function(response, status) {
+                            window.location = response.redirect;
+                        }).fail(function(response, status) {
+                            if (response.responseJSON.hasOwnProperty('errors')) {
+                                vm.errors = response.responseJSON.errors;
+                            }
+                            vm.pageAlert = {
+                                'type': 'danger',
+                                'message': response.responseJSON.message
+                            }
+                        });
+                    }
                 }
-            }
-        });
-    })
-</script>
+            });
+        })
+    </script>
 @endsection
