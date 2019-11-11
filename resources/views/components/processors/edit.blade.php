@@ -317,16 +317,19 @@
                 },
                 methods: {
                     postDelete: function() {
-                        let vm = app.pageVariables.editForm;
-                        let data = vm.processor;
+                        let vm = this;
+                        let pageVm = app.pageVariables.editForm;
+                        let data = pageVm.processor;
 
                         $.post(app.routes['components.processors.processor.delete.post'], data, function(response, status) {
                             window.location = response.redirect;
                         }).fail(function(response, status) {
+                            $(vm.$el).modal('hide');
+
                             if (response.responseJSON.hasOwnProperty('errors')) {
-                                vm.errors = response.responseJSON.errors;
+                                pageVm.errors = response.responseJSON.errors;
                             }
-                            vm.pageAlert = {
+                            pageVm.pageAlert = {
                                 'type': 'danger',
                                 'message': response.responseJSON.message
                             }
