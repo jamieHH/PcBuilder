@@ -38,6 +38,21 @@
         <a class="nav-link" href="{{ route('systems') }}">
             <b><i class="fa fa-hdd-o"></i>Systems</b>
         </a>
+        <li class="nav-sub-item {{ (isRouteOf(Request::path(), 'systems/new')) ? 'active' : '' }}">
+            <a class="nav-link" href="#">
+                <b><i class="fa fa-cube"></i>New System</b>
+            </a>
+        </li>
+        <li class="nav-sub-item {{ (isRouteOf(Request::path(), 'systems/saved')) ? 'active' : '' }}">
+            <a class="nav-link" href="#">
+                <b><i class="fa fa-cube"></i>Saved Systems</b>
+            </a>
+        </li>
+        <li class="nav-sub-item {{ (isRouteOf(Request::path(), 'systems/compare')) ? 'active' : '' }}">
+            <a class="nav-link" href="#">
+                <b><i class="fa fa-cube"></i>Compare Systems</b>
+            </a>
+        </li>
     </li>
     <li class="nav-item {{ (isRouteOf(Request::path(), 'inventories')) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('inventories') }}">
