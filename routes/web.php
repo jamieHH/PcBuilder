@@ -31,6 +31,14 @@ Route::namespace('Web')->group(function() {
             Route::get('/', 'MotherboardsController@index')->name('components.motherboards');
         });
 
+        Route::namespace('MemoryDevices')->prefix('memory-devices')->group(function() {
+            Route::get('/', 'MemoryDevicesController@index')->name('components.memory-devices');
+        });
+
+        Route::namespace('StorageDevices')->prefix('storage-devices')->group(function() {
+            Route::get('/', 'StorageDevicesController@index')->name('components.storage-devices');
+        });
+
         Route::namespace('Gpus')->prefix('gpus')->group(function() {
             Route::get('/', 'GpusController@index')->name('components.gpus');
         });
