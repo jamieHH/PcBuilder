@@ -287,11 +287,13 @@
                         vm.pageAlert.message = null;
 
                         $.post(app.routes['components.processors.processor.edit.post'], data, function(response, status) {
+                            $(".main").animate({ scrollTop: 0 }, "slow");
                             vm.pageAlert = {
                                 'type': 'success',
                                 'message': response.message
                             }
                         }).fail(function(response, status) {
+                            $(".main").animate({ scrollTop: 0 }, "slow");
                             if (response.responseJSON.hasOwnProperty('errors')) {
                                 vm.errors = response.responseJSON.errors;
                             }
