@@ -7,6 +7,12 @@ class StorageDevicesController extends Controller
 {
     public function index()
     {
-        return View::make('components.storage-devices.index');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Storage Devices' => '#',
+        ];
+
+        return View::make('components.storage-devices.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 }

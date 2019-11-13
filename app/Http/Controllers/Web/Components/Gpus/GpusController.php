@@ -7,6 +7,12 @@ class GpusController extends Controller
 {
     public function index()
     {
-        return View::make('components.gpus.index');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'GPUs' => '#',
+        ];
+
+        return View::make('components.gpus.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 }

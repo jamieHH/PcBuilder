@@ -35,7 +35,7 @@
                                     <ul class="breadcrumb">
                                         @foreach($breadcrumbs as $key => $value)
                                             <li style="">
-                                                @if($value != '#')<a href="{{ $value }}">{{ $key }}</a>@else{{ $key }}@endif
+                                                @if($value != '#')<a href="{{ $value }}">{{ $key }}</a>@else<b>{{ $key }}</b>@endif
                                             </li>
                                         @endforeach
                                     </ul>

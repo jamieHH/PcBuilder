@@ -7,6 +7,11 @@ class ComponentsController extends Controller
 {
     public function index()
     {
-        return View::make('components.index');
+        $breadcrumbs = [
+            'Components' => '#'
+        ];
+
+        return View::make('components.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 }

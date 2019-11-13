@@ -7,6 +7,12 @@ class MemoryDevicesController extends Controller
 {
     public function index()
     {
-        return View::make('components.memory-devices.index');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Memory Devices' => '#',
+        ];
+
+        return View::make('components.memory-devices.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 }

@@ -10,7 +10,14 @@ class ProcessorController extends Controller
 {
     public function edit(ProcessorRequest $request, $id)
     {
-        return View::make('components.processors.edit', ['id' => $id]);
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Processors' => route('components.processors'),
+            'Edit Processor' => '#',
+        ];
+
+        return View::make('components.processors.edit', ['id' => $id])
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     public function details(ProcessorRequest $request)

@@ -7,6 +7,12 @@ class MotherboardsController extends Controller
 {
     public function index()
     {
-        return View::make('components.motherboards.index');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Motherboards' => '#',
+        ];
+
+        return View::make('components.motherboards.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 }
