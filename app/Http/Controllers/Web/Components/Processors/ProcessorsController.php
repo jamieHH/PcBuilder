@@ -12,12 +12,25 @@ class ProcessorsController extends Controller
 {
     public function index()
     {
-        return View::make('components.processors.index');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Processors' => '#',
+        ];
+
+        return View::make('components.processors.index')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     public function new()
     {
-        return View::make('components.processors.new');
+        $breadcrumbs = [
+            'Components' => route('components'),
+            'Processors' => route('components.processors'),
+            'New Processor' => '#'
+        ];
+
+        return View::make('components.processors.new')
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     public function datatable(ProcessorRequest $request)

@@ -20,16 +20,30 @@
             <div class="container-fluid" style="height: 100%;">
                 <div class="row" style="height: 100%;">
                     @guest
-                        <div class="col-sm-12 main">
-                            @yield('content')
+                        <div class="main">
+                            <div class="col-sm-12 main-content">
+                                @yield('content')
+                            </div>
                         </div>
                     @else
                         <div class="col-sm-3 col-md-2 d-none d-sm-block sidebar">
                             @include('structure.sidebar')
                         </div>
-
-                        <div class="col-sm-9 ml-sm-auto col-md-10 pt-3 main">
-                            @yield('content')
+                        <div class="main">
+                            @isset($breadcrumbs)
+                                <div class="breadcrumb-bar">
+                                    <ul class="breadcrumb">
+                                        @foreach($breadcrumbs as $key => $value)
+                                            <li style="">
+                                                @if($value != '#')<a href="{{ $value }}">{{ $key }}</a>@else{{ $key }}@endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endisset
+                            <div class="col-sm-12 main-content">
+                                @yield('content')
+                            </div>
                         </div>
                     @endguest
                 </div>

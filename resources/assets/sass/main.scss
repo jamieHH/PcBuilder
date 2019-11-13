@@ -70,16 +70,18 @@ body {
 
 // Padding the content away from the nav and sidebar
 .main {
-  padding: 15px;
   overflow: scroll;
   background-color: #ccc;
+
+  .main-content {
+    padding: 15px;
+  }
 
   .section {
     padding: 10px 0 10px 0;
   }
 
   .panel-title {
-
     font-size: 1.6em;
     padding: 10px 10px 5px 10px;
 
@@ -100,5 +102,12 @@ body {
       width: 20px;
       text-align: center;
     }
+  }
+}
+
+.breadcrumb-bar {
+  .breadcrumb {
+    border-radius: 0;
+    margin: 0;
   }
 }
