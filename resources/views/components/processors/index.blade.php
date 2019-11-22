@@ -16,7 +16,7 @@
         {{-- filter panel --}}
         <div class="col-md-2">
             <div class="section row">
-                <div class="col-md-12">
+                <div class="col-md-12 filter-bar">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <strong>Filters</strong>
