@@ -36,19 +36,25 @@ class ProcessorsController extends Controller
     public function datatable(ProcessorRequest $request)
     {
         $cpus = CpuQuery::create()->find();
-        $headers = ['Name', 'CoreCount', 'BaseClock', 'BoostClock', 'TDP', 'Edit'];
+        $headers = [
+            'name' => 'Name',
+            'coreCount' => 'CoreCount',
+            'baseClock' => 'BaseClock',
+            'boostClock' => 'BoostClock',
+            'tdp' => 'TDP',
+            'edit' => 'Edit'
+        ];
         $rows = [];
 
         foreach ($cpus as $cpu) {
             $row = [];
-            foreach ($headers as $header) {
-                if ($header != "Edit") {
-                    $fName = sprintf('get%s', $header);
-                    array_push($row, $cpu->$fName());
+            foreach ($headers as $headerName => $methodGetter) {
+                if ($headerName != "edit") {
+                    $fName = sprintf('get%s', $methodGetter);
+                    $row[$headerName] = $cpu->$fName();
                 } else {
-                    $href = route('components.processors.processor.edit', ['id' => $cpu->getId()]);
-                    $html = sprintf('<a href="%s">Edit</a>', $href);
-                    array_push($row, $html);
+                    $html = sprintf('<a href="%s">Edit</a>', route('components.processors.processor.edit', ['id' => $cpu->getId()]));
+                    $row[$headerName] = $html;
                 }
             }
 
@@ -56,7 +62,7 @@ class ProcessorsController extends Controller
         }
 
         return response()->json([
-            'headers' => $headers, 'rows' => $rows
+            'data' => $rows
         ], 200);
     }
 

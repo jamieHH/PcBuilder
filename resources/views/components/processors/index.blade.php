@@ -11,7 +11,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
     </div>
-
     <div class="row">
         {{-- filter panel --}}
         <div class="col-md-2">
@@ -85,27 +84,21 @@
         <div class="col-md-10">
             <div class="section row">
                 <div class="col-md-12">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" name="search" placeholder="Search">
-                    </div>
-                </div>
-            </div>
-            <div class="section row">
-                <div class="col-md-12">
                     <div class="panel panel-default">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th v-for="header in datatable.headers">@{{ header }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="row in datatable.rows">
-                                    <td v-for="value in row"><div v-html="value"></div></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="panel-body">
+                            <table id="processors-table" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Core Count</th>
+                                        <th>Base Clock</th>
+                                        <th>Boost Clock</th>
+                                        <th>TDP</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,50 +122,26 @@
             window.vue = new Vue({
                 el: '#processors-page',
                 mounted: function() {
-                    this.getData();
+                    this.initialisePage();
                 },
                 data: {
-                    datatable: {
-                        headers: [],
-                        rows: []
-                    },
-                    filterWindow: {
-                        filters: [
-                            {
-                                column: "Manufacturer",
-                                options: {
-                                    "Intel": false,
-                                    "AMD": false
-                                }
-                            },
-                            {
-                                column: "CPU Socket",
-                                options: {
-                                    "LGA 1151": false,
-                                    "AM4": false,
-                                    "AM3": false
-                                }
-                            }
-                        ],
-                    },
                     pageAlert: {
                         'type': '{{ session('pageAlert')['type'] }}',
                         'message': '{{ session('pageAlert')['message'] }}'
                     }
                 },
                 methods: {
-                    getData: function() {
-                        var vm = this;
-
-                        $.get(app.routes['components.processors.datatable'], function(response, status) {
-                            vm.datatable.headers = response.headers;
-                            vm.datatable.rows = response.rows;
-
-                        }).fail(function(response, status) {
-                            vm.pageAlert = {
-                                'type': 'danger',
-                                'message': response.responseJSON.message
-                            }
+                    initialisePage: function() {
+                        $('#processors-table').DataTable({
+                            ajax: app.routes['components.processors.datatable'],
+                            columns: [
+                                { "data": "name" },
+                                { "data": "coreCount" },
+                                { "data": "baseClock" },
+                                { "data": "boostClock" },
+                                { "data": "tdp" },
+                                { "data": "edit" }
+                            ]
                         });
                     }
                 }

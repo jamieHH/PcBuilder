@@ -9,6 +9,8 @@ require('./bootstrap');
 
 require('./main');
 
+require('datatables.net');
+
 window.Vue = require('vue');
 
 /**
