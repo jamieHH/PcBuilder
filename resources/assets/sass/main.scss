@@ -23,7 +23,7 @@ body {
 .sidebar {
   padding: 0 !important;
   background-color: #353545;
-  overflow: scroll;
+  //overflow: scroll;
 
   .nav-pills {
     .nav-item {
@@ -70,7 +70,7 @@ body {
 
 // Padding the content away from the nav and sidebar
 .main {
-  overflow: scroll;
+  //overflow: scroll;
   background-color: #ccc;
 
   .main-content {
