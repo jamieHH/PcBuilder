@@ -18,8 +18,8 @@
         <div id="app">
             @include('structure.navbar')
 
-            <div class="container-fluid" style="#height: 100%;">
-                <div class="row" style="#height: 100%;">
+            <div class="container-fluid" style="height: 100%;">
+                <div class="row" style="height: 100%;">
                     @guest
                         <div class="main">
                             <div class="col-sm-12 main-content">
@@ -35,7 +35,7 @@
                                 <div class="breadcrumb-bar">
                                     <ul class="breadcrumb">
                                         @foreach($breadcrumbs as $key => $value)
-                                            <li>
+                                            <li style="">
                                                 @if($value != '#')<a href="{{ $value }}">{{ $key }}</a>@else<b>{{ $key }}</b>@endif
                                             </li>
                                         @endforeach
