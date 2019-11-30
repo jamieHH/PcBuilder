@@ -22,6 +22,17 @@
                 <div class="row" style="height: 100%;">
                     @guest
                         <div class="main">
+                            @isset($breadcrumbs)
+                                <div class="breadcrumb-bar">
+                                    <ul class="breadcrumb">
+                                        @foreach($breadcrumbs as $key => $value)
+                                            <li style="">
+                                                @if($value != '#')<a href="{{ $value }}">{{ $key }}</a>@else<b>{{ $key }}</b>@endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endisset
                             <div class="col-sm-12 main-content">
                                 @yield('content')
                             </div>
