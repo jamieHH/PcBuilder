@@ -23,7 +23,7 @@
                         <div class="panel-body">
                             Manufacturer
                             <div>
-                                <input type="checkbox"  id="man-opt-1"><label for="man-opt-1">&nbsp; Intel</label>
+                                <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Intel</label>
                             </div>
                             <div>
                                 <input type="checkbox" id="man-opt-2"><label for="man-opt-2">&nbsp; AMD</label>

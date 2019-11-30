@@ -339,6 +339,6 @@
                     }
                 }
             });
-        })
+        });
     </script>
 @endsection

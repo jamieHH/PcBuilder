@@ -14,16 +14,20 @@
 Auth::routes();
 
 Route::namespace('Web')->group(function() {
-    Route::namespace('Components')->middleware('auth')->prefix('components')->group(function() {
+    Route::namespace('Components')->prefix('components')->group(function() {
         Route::namespace('Processors')->prefix('processors')->group(function() {
-            Route::get('/processor/{id}/details', 'ProcessorController@details')->name('components.processors.processor.details');
-            Route::get('/processor/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
-            Route::post('/processor/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
-            Route::post('/processor/{id}/delete', 'ProcessorController@delete')->name('components.processors.processor.delete.post');
+            Route::middleware('auth')->group(function() {
+                Route::get('/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
+                Route::post('/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
+                Route::post('/{id}/delete', 'ProcessorController@delete')->name('components.processors.processor.delete.post');
+
+                Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
+                Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');
+            });
+
+            Route::get('/{id}/details', 'ProcessorController@details')->name('components.processors.processor.details');
 
             Route::get('/datatable', 'ProcessorsController@datatable')->name('components.processors.datatable');
-            Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
-            Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');
             Route::get('/', 'ProcessorsController@index')->name('components.processors');
         });
 
@@ -32,6 +36,18 @@ Route::namespace('Web')->group(function() {
         });
 
         Route::namespace('MemoryDevices')->prefix('memory-devices')->group(function() {
+            Route::middleware('auth')->group(function() {
+                Route::get('/{id}/edit', 'MemoryDeviceController@edit')->name('components.memory-devices.memory-device.edit');
+                Route::post('/{id}/edit', 'MemoryDeviceController@update')->name('components.memory-devices.memory-device.edit.post');
+                Route::post('/{id}/delete', 'MemoryDeviceController@delete')->name('components.memory-devices.memory-device.delete.post');
+
+                Route::get('/new', 'MemoryDevicesController@new')->name('components.memory-devices.new');
+                Route::post('/new', 'MemoryDevicesController@create')->name('components.memory-devices.new.post');
+            });
+
+            Route::get('/{id}/details', 'MemoryDeviceController@details')->name('components.memory-devices.memory-device.details');
+
+            Route::get('/datatable', 'MemoryDevicesController@datatable')->name('components.memory-devices.datatable');
             Route::get('/', 'MemoryDevicesController@index')->name('components.memory-devices');
         });
 
