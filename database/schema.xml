@@ -24,8 +24,8 @@
         <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
         <column name="manufacturer_id" type="INTEGER" size="8" required="true" />
         <column name="memory_type_id" type="INTEGER" size="8" required="true" />
+        <column name="memory_speed_id" type="INTEGER" size="8"  required="true" />
         <column name="name" type="VARCHAR" size="255" required="true" />
-        <column name="clock_speed" type="INTEGER" size="8"  required="true" />
         <column name="capacity" type="INTEGER" size="8" required="true" />
         <behavior name="timestampable" />
         <foreign-key foreignTable="manufacturer">
@@ -33,6 +33,9 @@
         </foreign-key>
         <foreign-key foreignTable="memory_type">
             <reference local="memory_type_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="memory_speed">
+            <reference local="memory_speed_id" foreign="id" />
         </foreign-key>
     </table>
     <table name="motherboard" idMethod="native">
@@ -66,6 +69,11 @@
         </foreign-key>
     </table>
     <table name="memory_type" idMethod="native">
+        <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="name" type="VARCHAR" size="255" required="true" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="memory_speed" idMethod="native">
         <column name="id" type="INTEGER" size="255" primaryKey="true" autoIncrement="true" required="true" />
         <column name="name" type="VARCHAR" size="255" required="true" />
         <behavior name="timestampable" />
