@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-md-12">
                                 <a href="{{ route('components.memory-devices.new') }}" class="btn btn-primary pull-right">
-                                    <i class="fa fa-plus"></i> Add New Processor
+                                    <i class="fa fa-plus"></i> Add New Memory Device
                                 </a>
                             </div>
                         </div>
