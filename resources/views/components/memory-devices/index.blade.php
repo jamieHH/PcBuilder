@@ -8,11 +8,20 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2><i class="fa fa-microchip"></i>&nbsp; Memory Devices</h2>
+                                <h2>
+                                    <strong><i class="fa fa-microchip"></i>&nbsp; Memory Devices</strong>
+                                    <a href="{{ route('components.memory-devices.new') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Memory Device</a>
+                                </h2>
                             </div>
-                            <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -87,11 +96,11 @@
                                     </thead>
                                 </table>
                             </div>
-                            <div class="col-md-12">
-                                <a href="{{ route('components.memory-devices.new') }}" class="btn btn-primary pull-right">
-                                    <i class="fa fa-plus"></i> Add New Memory Device
-                                </a>
-                            </div>
+{{--                            <div class="col-md-12">--}}
+{{--                                <a href="{{ route('components.memory-devices.new') }}" class="btn btn-primary pull-right">--}}
+{{--                                    <i class="fa fa-plus"></i> Add New Memory Device--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
