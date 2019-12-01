@@ -13,8 +13,11 @@ class NewMemoryDeviceRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
             'manufacturer_id' => 'required|numeric',
+            'memory_speed_id' => 'required|numeric',
+            'memory_type_id' => 'required|numeric',
+            'name' => 'required',
+            'capacity' => 'required|numeric',
         ];
     }
 

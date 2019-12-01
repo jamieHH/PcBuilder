@@ -3,7 +3,9 @@
 use App\Http\Controllers\Web\Controller;
 use App\Http\Requests\Web\Components\MemoryDevices\MemoryDeviceRequest;
 use App\Http\Requests\Web\Components\MemoryDevices\NewMemoryDeviceRequest;
+use App\Models\Ram;
 use App\Models\RamQuery;
+use Propel\Runtime\Exception\PropelException;
 use View;
 
 class MemoryDevicesController extends Controller
@@ -64,6 +66,23 @@ class MemoryDevicesController extends Controller
 
     public function create(NewMemoryDeviceRequest $request)
     {
+        try {
+            $ram = new Ram();
+            $ram->setManufacturer($request->getManufacturer())
+                ->setMemorySpeedId('memory_speed_id')
+                ->setMemoryTypeId('memory_type_id')
+                ->setName($request->get('name'))
+                ->setCapacity($request->get('capacity'))
+                ->save();
+        } catch (PropelException $e) {
+            return response(['message' => $e->getMessage()], 500);
+        }
+
+        session()->flash('pageAlert', [
+            'type' => 'success',
+            'message' => 'New Memory Device added successfully'
+        ]);
+
         return response()->json([
             'redirect' => route('components.memory-devices'),
             'message' => 'New Memory Device added successfully'

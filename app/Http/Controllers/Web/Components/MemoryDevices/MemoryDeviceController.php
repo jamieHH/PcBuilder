@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\Controller;
 use App\Http\Requests\Web\Components\MemoryDevices\MemoryDeviceRequest;
 use App\Http\Requests\Web\Components\MemoryDevices\UpdateMemoryDeviceRequest;
+use Propel\Runtime\Exception\PropelException;
 use View;
 
 class MemoryDeviceController extends Controller
@@ -21,11 +22,38 @@ class MemoryDeviceController extends Controller
 
     public function details(MemoryDeviceRequest $request)
     {
-
+        $cpu = $request->getRam();
+        return response()->json([
+            "processor" => [
+                "id" => $cpu->getId(),
+                "manufacturerId" => $cpu->getManufacturerId(),
+                "memorySpeedId" => $cpu->getMemorySpeedId(),
+                "memoryTypeId" => $cpu->getMemoryTypeId(),
+                "name" => $cpu->getName(),
+                "capacity" => $cpu->getCapacity(),
+            ]
+        ], 200);
     }
 
     public function update(UpdateMemoryDeviceRequest $request)
     {
+        try {
+            $ram = $request->getRam();
+            $ram->setManufacturer($request->getManufacturer())
+                ->setMemorySpeedId($request->get('memory_speed_id'))
+                ->setMemoryTypeId($request->get('memory_type_id'))
+                ->setName($request->get('name'))
+                ->setCapacity($request->get('capacity'))
+                ->save();
+        } catch (PropelException $e) {
+            return response(['message' => $e->getMessage()], 500);
+        }
+
+        session()->flash('pageAlert', [
+            'type' => 'success',
+            'message' => 'Memory Device updated successfully'
+        ]);
+
         return response()->json([
             'redirect' => route('components.memory-devices'),
             'message' => 'Processor updated successfully'
@@ -34,6 +62,17 @@ class MemoryDeviceController extends Controller
 
     public function delete(MemoryDeviceRequest $request)
     {
+        try {
+            $request->getRam()->delete();
+        } catch (PropelException $e) {
+            return response(['message' => $e->getMessage()], 500);
+        }
+
+        session()->flash('pageAlert', [
+            'type' => 'success',
+            'message' => 'Memory Device deleted successfully'
+        ]);
+
         return response()->json([
             'redirect' => route('components.memory-devices'),
             'message' => 'Memory Device deleted successfully'
