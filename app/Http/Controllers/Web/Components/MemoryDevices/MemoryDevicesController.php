@@ -51,10 +51,13 @@ class MemoryDevicesController extends Controller
             foreach ($headers as $headerName => $methodGetter) {
                 if ($headerName != "edit") {
                     if (is_array($methodGetter)) {
-                        // TODO: make this process scalable
-                        $fName1 = sprintf('get%s', $methodGetter[0]);
-                        $fName2 = sprintf('get%s', $methodGetter[1]);
-                        $row[$headerName] = $ram->$fName1()->$fName2();
+                        $result = $ram;
+                        foreach ($methodGetter as $prop) {
+                            $funk = sprintf('get%s', $prop);
+                            $result = $result->$funk();
+                        }
+
+                        $row[$headerName] = $result;
                     } else {
                         $fName = sprintf('get%s', $methodGetter);
                         $row[$headerName] = $ram->$fName();
