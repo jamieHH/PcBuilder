@@ -62,16 +62,18 @@ Route::namespace('Web')->group(function() {
         Route::get('/', 'ComponentsController@index')->name('components');
     });
 
-    Route::namespace('Systems')->prefix('systems')->group(function() {
-        Route::get('/', 'SystemsController@index')->name('systems');
-    });
+    Route::middleware('auth')->group(function() {
+        Route::namespace('Systems')->prefix('systems')->group(function () {
+            Route::get('/', 'SystemsController@index')->name('systems');
+        });
 
-    Route::namespace('Inventories')->prefix('inventories')->group(function() {
-        Route::get('/', 'InventoriesController@index')->name('inventories');
-    });
+        Route::namespace('Inventories')->prefix('inventories')->group(function () {
+            Route::get('/', 'InventoriesController@index')->name('inventories');
+        });
 
-    Route::namespace('Lists')->prefix('lists')->group(function() {
-        Route::get('/', 'ListsController@index')->name('lists');
+        Route::namespace('Lists')->prefix('lists')->group(function () {
+            Route::get('/', 'ListsController@index')->name('lists');
+        });
     });
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
