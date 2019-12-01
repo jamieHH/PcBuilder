@@ -39,7 +39,9 @@ class MemoryDevicesController extends Controller
         $headers = [
             'name' => 'Name',
             'capacity' => 'Capacity',
-            'memorySpeed' => 'MemorySpeedId',
+            'manufacturer' => ['Manufacturer', 'Name'],
+            'memorySpeed' => ['MemorySpeed', 'Name'],
+            'memoryType' => ['MemoryType', 'Name'],
             'edit' => 'Edit'
         ];
         $rows = [];
@@ -48,8 +50,15 @@ class MemoryDevicesController extends Controller
             $row = [];
             foreach ($headers as $headerName => $methodGetter) {
                 if ($headerName != "edit") {
-                    $fName = sprintf('get%s', $methodGetter);
-                    $row[$headerName] = $ram->$fName();
+                    if (is_array($methodGetter)) {
+                        // TODO: make this process scalable
+                        $fName1 = sprintf('get%s', $methodGetter[0]);
+                        $fName2 = sprintf('get%s', $methodGetter[1]);
+                        $row[$headerName] = $ram->$fName1()->$fName2();
+                    } else {
+                        $fName = sprintf('get%s', $methodGetter);
+                        $row[$headerName] = $ram->$fName();
+                    }
                 } else {
                     $html = sprintf('<a href="%s">Edit</a>', route('components.memory-devices.memory-device.edit', ['id' => $ram->getId()]));
                     $row[$headerName] = $html;

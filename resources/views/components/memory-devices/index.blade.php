@@ -89,18 +89,15 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Manufacturer</th>
                                             <th>Capacity</th>
                                             <th>Memory Speed</th>
+                                            <th>Memory Type</th>
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
-{{--                            <div class="col-md-12">--}}
-{{--                                <a href="{{ route('components.memory-devices.new') }}" class="btn btn-primary pull-right">--}}
-{{--                                    <i class="fa fa-plus"></i> Add New Memory Device--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -131,8 +128,10 @@
                             ajax: app.routes['components.memory-devices.datatable'],
                             columns: [
                                 { "data": "name" },
+                                { "data": "manufacturer" },
                                 { "data": "capacity" },
                                 { "data": "memorySpeed" },
+                                { "data": "memoryType" },
                                 { "data": "edit" }
                             ]
                         });
