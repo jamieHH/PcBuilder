@@ -85,7 +85,7 @@
                             </div>
                             {{-- table panel --}}
                             <div class="col-md-10">
-                                <table id="memory-devices-table" class="table table-striped table-hover">
+                                <table id="memory-devices-table" class="display" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>

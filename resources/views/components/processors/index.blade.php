@@ -89,7 +89,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table id="processors-table" class="table table-striped table-hover">
+                            <table id="processors-table" class="display" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
