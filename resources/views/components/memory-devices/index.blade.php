@@ -90,7 +90,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Capacity</th>
-                                            <th>Clock Speed</th>
+                                            <th>Memory Speed</th>
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
@@ -132,7 +132,7 @@
                             columns: [
                                 { "data": "name" },
                                 { "data": "capacity" },
-                                { "data": "clockSpeed" },
+                                { "data": "memorySpeed" },
                                 { "data": "edit" }
                             ]
                         });

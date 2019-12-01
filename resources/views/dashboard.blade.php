@@ -4,7 +4,7 @@
 <div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>Dashboard</b></h3>
+            <h3 class="panel-title"><i class="fa fa-tachometer"></i><b>Dashboard</b></h3>
         </div>
         <div class="panel-body">
             @if (session('status'))
@@ -71,26 +71,38 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>Systems</b></h3>
+            <h3 class="panel-title"><b><i class="fa fa-hdd-o"></i>Systems</b></h3>
         </div>
         <div class="panel-body">
-            Pre-Configured Systems
+            @guest
+                <a href="{{ route('systems') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Sign-in to view your Systems</a>
+            @else
+                Pre-Configured Systems
+            @endguest
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>Inventories</b></h3>
+            <h3 class="panel-title"><b><i class="fa fa-cubes"></i>Inventories</b></h3>
         </div>
         <div class="panel-body">
-            Inventory Collections
+            @guest
+                <a href="{{ route('inventories') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Sign-in to view your Inventories</a>
+            @else
+                Inventory Collections
+            @endguest
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>Parts Lists</b></h3>
+            <h3 class="panel-title"><b><i class="fa fa-list"></i>Parts Lists</b></h3>
         </div>
         <div class="panel-body">
-            Item Favorites
+            @guest
+                <a href="{{ route('lists') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Sign-in to view your Saved Lists</a>
+            @else
+                Item Favorites
+            @endguest
         </div>
     </div>
 </div>

@@ -37,7 +37,7 @@ class MemoryDevicesController extends Controller
         $headers = [
             'name' => 'Name',
             'capacity' => 'Capacity',
-            'clockSpeed' => 'ClockSpeed',
+            'memorySpeed' => 'MemorySpeedId',
             'edit' => 'Edit'
         ];
         $rows = [];
