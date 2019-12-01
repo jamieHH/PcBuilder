@@ -93,7 +93,9 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Core Count</th>
+                                        <th>Manufacturer</th>
+                                        <th>Socket</th>
+                                        <th>Cores</th>
                                         <th>Base Clock</th>
                                         <th>Boost Clock</th>
                                         <th>TDP</th>
@@ -132,6 +134,8 @@
                             ajax: app.routes['components.processors.datatable'],
                             columns: [
                                 { "data": "name" },
+                                { "data": "manufacturer" },
+                                { "data": "cpuSocket" },
                                 { "data": "coreCount" },
                                 { "data": "baseClock" },
                                 { "data": "boostClock" },

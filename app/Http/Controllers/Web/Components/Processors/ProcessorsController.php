@@ -38,6 +38,8 @@ class ProcessorsController extends Controller
         $cpus = CpuQuery::create()->find();
         $headers = [
             'name' => 'Name',
+            'manufacturer' => ['Manufacturer', 'Name'],
+            'cpuSocket' => ['CpuSocket', 'Name'],
             'coreCount' => 'CoreCount',
             'baseClock' => 'BaseClock',
             'boostClock' => 'BoostClock',
@@ -50,8 +52,18 @@ class ProcessorsController extends Controller
             $row = [];
             foreach ($headers as $headerName => $methodGetter) {
                 if ($headerName != "edit") {
-                    $fName = sprintf('get%s', $methodGetter);
-                    $row[$headerName] = $cpu->$fName();
+                    if (is_array($methodGetter)) {
+                        $result = $cpu;
+                        foreach ($methodGetter as $prop) {
+                            $funk = sprintf('get%s', $prop);
+                            $result = $result->$funk();
+                        }
+
+                        $row[$headerName] = $result;
+                    } else {
+                        $fName = sprintf('get%s', $methodGetter);
+                        $row[$headerName] = $cpu->$fName();
+                    }
                 } else {
                     $html = sprintf('<a href="%s">Edit</a>', route('components.processors.processor.edit', ['id' => $cpu->getId()]));
                     $row[$headerName] = $html;
