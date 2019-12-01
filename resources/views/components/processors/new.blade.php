@@ -70,7 +70,7 @@
                             <label for="base-clock">Base Clock <small class="text-muted">(MHz)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-tachometer"></i></span>
-                                <input id="base-clock" type="number" min="0" class="form-control" name="base_clock" placeholder="Base Clock" v-model="processor.base_clock">
+                                <input id="base-clock" type="number" min="0" step="1" class="form-control" name="base_clock" placeholder="Base Clock" v-model="processor.base_clock">
                             </div>
                             <span class="help-block" v-if="hasError('base_clock')"> <!-- inline error -->
                                 <ul v-for="error in errors.base_clock">
@@ -84,7 +84,7 @@
                             <label for="boost-clock">Boost Clock <small class="text-muted">(MHz)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-tachometer"></i></span>
-                                <input id="boost-clock" type="number" min="0" class="form-control" name="boost_clock" placeholder="Boost Clock" v-model="processor.boost_clock">
+                                <input id="boost-clock" type="number" min="0" step="1" class="form-control" name="boost_clock" placeholder="Boost Clock" v-model="processor.boost_clock">
                             </div>
                             <span class="help-block" v-if="hasError('boost_clock')"> <!-- inline error -->
                                 <ul v-for="error in errors.boost_clock">
@@ -98,7 +98,7 @@
                             <label for="core-count">Core Count</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="core-count" type="number" min="0" class="form-control" name="core_count" placeholder="Core Count" v-model="processor.core_count">
+                                <input id="core-count" type="number" min="0" step="1" class="form-control" name="core_count" placeholder="Core Count" v-model="processor.core_count">
                             </div>
                             <span class="help-block" v-if="hasError('core_count')"> <!-- inline error -->
                                 <ul v-for="error in errors.core_count">
@@ -112,7 +112,7 @@
                             <label for="thread-count">Thread Count</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-                                <input id="thread-count" type="number" min="0" class="form-control" name="thread_count" placeholder="Thread Count" v-model="processor.thread_count">
+                                <input id="thread-count" type="number" min="0" step="1" class="form-control" name="thread_count" placeholder="Thread Count" v-model="processor.thread_count">
                             </div>
                             <span class="help-block" v-if="hasError('thread_count')"> <!-- inline error -->
                                 <ul v-for="error in errors.thread_count">
@@ -128,7 +128,7 @@
                             <label for="l3-cache">L3 Cache <small class="text-muted">(MBs)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="l3-cache" type="number" min="0" class="form-control" name="l3_cache" placeholder="L3 Cache" v-model="processor.l3_cache">
+                                <input id="l3-cache" type="number" min="0" step="1" class="form-control" name="l3_cache" placeholder="L3 Cache" v-model="processor.l3_cache">
                             </div>
                             <span class="help-block" v-if="hasError('l3_cache')"> <!-- inline error -->
                                 <ul v-for="error in errors.l3_cache">
@@ -149,7 +149,7 @@
                             <label for="tdp">Thermal Design Power <small class="text-muted">(Watts)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-thermometer-half"></i></span>
-                                <input id="tdp" type="number" min="0" class="form-control" name="tdp" placeholder="TDP" v-model="processor.tdp">
+                                <input id="tdp" type="number" min="0" step="1" class="form-control" name="tdp" placeholder="TDP" v-model="processor.tdp">
                             </div>
                             <span class="help-block" v-if="hasError('tdp')"> <!-- inline error -->
                                 <ul v-for="error in errors.tdp">
@@ -163,7 +163,7 @@
                             <label for="lithography">Lithography <small class="text-muted">(nm)</small></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon"><i class="fa fa-compress"></i></span>
-                                <input id="lithography" type="number" min="0" class="form-control" name="lithography" placeholder="Lithography" v-model="processor.lithography">
+                                <input id="lithography" type="number" min="0" step="1" class="form-control" name="lithography" placeholder="Lithography" v-model="processor.lithography">
                             </div>
                             <span class="help-block" v-if="hasError('lithography')"> <!-- inline error -->
                                 <ul v-for="error in errors.lithography">
