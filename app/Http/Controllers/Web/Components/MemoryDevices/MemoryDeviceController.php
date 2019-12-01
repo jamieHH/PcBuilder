@@ -24,11 +24,11 @@ class MemoryDeviceController extends Controller
     {
         $cpu = $request->getRam();
         return response()->json([
-            "processor" => [
+            "memoryDevice" => [
                 "id" => $cpu->getId(),
-                "manufacturerId" => $cpu->getManufacturerId(),
-                "memorySpeedId" => $cpu->getMemorySpeedId(),
-                "memoryTypeId" => $cpu->getMemoryTypeId(),
+                "manufacturer_id" => $cpu->getManufacturerId(),
+                "memory_speed_id" => $cpu->getMemorySpeedId(),
+                "memory_type_id" => $cpu->getMemoryTypeId(),
                 "name" => $cpu->getName(),
                 "capacity" => $cpu->getCapacity(),
             ]
