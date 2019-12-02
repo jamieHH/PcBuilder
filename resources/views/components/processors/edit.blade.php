@@ -32,8 +32,9 @@
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('manufacturer_id') }">
                             <label for="manufacturer">Manufacturer</label>
                             <select id="manufacturer" name="manufacturer_id" class="form-control js-select2" v-model="processor.manufacturer_id">
-                                <option value="1">Intel</option>
-                                <option value="2">AMD</option>
+                                @foreach(\App\Models\ManufacturerQuery::create()->find() as $manufacturer)
+                                    <option value="{{ $manufacturer->getId() }}">{{ $manufacturer->getName() }}</option>
+                                @endforeach
                             </select>
                             <span class="help-block" v-if="hasError('manufacturer_id')"> <!-- inline error -->
                                 <ul v-for="error in errors.manufacturer_id">
@@ -48,8 +49,9 @@
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('cpu_socket_id') }">
                             <label for="cpu-socket">CPU Socket</label>
                             <select id="cpu-socket" name="cpu_socket_id" class="form-control" v-model="processor.cpu_socket_id">
-                                <option value="1">LGA 1151</option>
-                                <option value="2">Option 2</option>
+                                @foreach(\App\Models\CpuSocketQuery::create()->find() as $socket)
+                                    <option value="{{ $socket->getId() }}">{{ $socket->getName() }}</option>
+                                @endforeach
                             </select>
                             <span class="help-block" v-if="hasError('cpu_socket_id')"> <!-- inline error -->
                                 <ul v-for="error in errors.cpu_socket_id">

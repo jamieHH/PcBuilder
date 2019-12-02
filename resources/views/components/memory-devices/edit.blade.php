@@ -32,8 +32,9 @@
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('manufacturer_id') }">
                             <label for="manufacturer">Manufacturer</label>
                             <select id="manufacturer" name="manufacturer_id" class="form-control js-select2" v-model="memoryDevice.manufacturer_id">
-                                <option value="1">Intel</option>
-                                <option value="2">AMD</option>
+                                @foreach(\App\Models\ManufacturerQuery::create()->find() as $manufacturer)
+                                    <option value="{{ $manufacturer->getId() }}">{{ $manufacturer->getName() }}</option>
+                                @endforeach
                             </select>
                             <span class="help-block" v-if="hasError('manufacturer_id')"> <!-- inline error -->
                                 <ul v-for="error in errors.manufacturer_id">
@@ -48,8 +49,9 @@
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('memory_speed_id') }">
                             <label for="memory-speed">Memory Speed</label>
                             <select id="memory-speed" name="memory_speed_id" class="form-control js-select2" v-model="memoryDevice.memory_speed_id">
-                                <option value="1">opt 1</option>
-                                <option value="2">opt 2</option>
+                                @foreach(\App\Models\MemorySpeedQuery::create()->find() as $speed)
+                                    <option value="{{ $speed->getId() }}">{{ $speed->getName() }}</option>
+                                @endforeach
                             </select>
                             <span class="help-block" v-if="hasError('memory_speed_id')"> <!-- inline error -->
                                 <ul v-for="error in errors.memory_speed_id">
@@ -62,8 +64,9 @@
                         <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('memory_type_id') }">
                             <label for="memory-type">Memory Type</label>
                             <select id="memory-type" name="memory_type_id" class="form-control js-select2" v-model="memoryDevice.memory_type_id">
-                                <option value="1">opt 1</option>
-                                <option value="2">opt 2</option>
+                                @foreach(\App\Models\MemoryTypeQuery::create()->find() as $type)
+                                    <option value="{{ $type->getId() }}">{{ $type->getName() }}</option>
+                                @endforeach
                             </select>
                             <span class="help-block" v-if="hasError('memory_type_id')"> <!-- inline error -->
                                 <ul v-for="error in errors.memory_type_id">

@@ -12,6 +12,7 @@
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -23,7 +24,7 @@
                     <div class="col-sm-3 col-md-2 d-none d-sm-block sidebar">
                         @include('structure.sidebar')
                     </div>
-                    <div class="main">
+                    <div id="main" class="main">
                         @isset($breadcrumbs)
                             <div class="breadcrumb-bar">
                                 <ul class="breadcrumb">
@@ -47,7 +48,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
         @yield('page-javascript')
     </body>
 </html>
