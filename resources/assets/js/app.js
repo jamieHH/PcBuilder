@@ -20,7 +20,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('form-input', require('./components/FormInputComponent.vue'));
+Vue.component('text-input', require('./components/TextInputComponent.vue'));
 
 
 $.ajaxSetup({
