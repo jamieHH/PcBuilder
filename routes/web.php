@@ -76,6 +76,12 @@ Route::namespace('Web')->group(function() {
         });
     });
 
+    Route::namespace('Misc')->prefix('misc')->group(function () {
+        Route::get('/manufacturers/select2', 'Manufacturers\ManufacturersController@select2')->name('misc.manufacturers.select2');
+        Route::get('/memory-speeds/select2', 'MemorySpeeds\MemorySpeedsController@select2')->name('misc.memory-speeds.select2');
+        Route::get('/memory-types/select2', 'MemoryTypes\MemoryTypesController@select2')->name('misc.memory-types.select2');
+    });
+
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('/', 'Controller@index')->name('root');
