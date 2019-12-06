@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('text-input', require('./components/TextInputComponent.vue'));
+Vue.component('number-input', require('./components/NumberInputComponent.vue'));
+Vue.component('select-input', require('./components/SelectInputComponent.vue'));
 
 
 $.ajaxSetup({
