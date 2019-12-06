@@ -13,7 +13,7 @@ class MemoryTypesController extends Controller
         foreach ($items as $item) {
             array_push($options, [
                 'id' => $item->getId(),
-                'name' => $item->getName()
+                'text' => $item->getName()
             ]);
         }
         return response()->json([
