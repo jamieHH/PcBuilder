@@ -117,3 +117,29 @@ body {
     margin: 10px 0;
   }
 }
+
+// select2 styling
+.select2.select2-container.select2-container--default {
+  height: 46px;
+  width: 100% !important;
+}
+
+
+
+.select2-selection.select2-selection--single {
+  height: 46px;
+}
+
+.has-error .select2-selection.select2-selection--single {
+  border-color: #a94442;
+}
+
+.select2-selection__rendered {
+  height: 44px;
+  font-size: 18px;
+  padding: 8px 40px 8px 16px !important;
+}
+.select2-selection__arrow {
+  width: 40px !important;
+  height: 44px !important;
+}
