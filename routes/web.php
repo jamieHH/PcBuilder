@@ -81,6 +81,9 @@ Route::namespace('Web')->group(function() {
         Route::get('/memory-speeds/select2', 'MemorySpeeds\MemorySpeedsController@select2')->name('misc.memory-speeds.select2');
         Route::get('/memory-types/select2', 'MemoryTypes\MemoryTypesController@select2')->name('misc.memory-types.select2');
         Route::get('/cpu-sockets/select2', 'CpuSockets\CpuSocketsController@select2')->name('misc.cpu-sockets.select2');
+        Route::get('/interface-types/select2', 'InterfaceTypes\InterfaceTypesController@select2')->name('misc.interface-types.select2');
+        Route::get('/storage-device-types/select2', 'StorageDeviceTypes\StorageDeviceTypesController@select2')->name('misc.storage-device-types.select2');
+        Route::get('/storage-device-form-factors/select2', 'StorageDeviceFormFactors\StorageDeviceFormFactorsController@select2')->name('misc.storage-device-form-factors.select2');
     });
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
