@@ -16,7 +16,6 @@
                 <div class="col-md-4">
                     <a href="{{ route('components.motherboards') }}">
                         <div class="panel panel-default">
-{{--                            <img src="{{ asset('images/cpu-img.jpg') }}" alt="CPU Image" class="img-responsive">--}}
                             <div class="panel-body">
                                 <i class="fa fa-newspaper-o"></i> Motherboards
                             </div>

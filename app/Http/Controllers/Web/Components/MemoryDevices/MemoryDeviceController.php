@@ -56,7 +56,7 @@ class MemoryDeviceController extends Controller
 
         return response()->json([
             'redirect' => route('components.memory-devices'),
-            'message' => 'Processor updated successfully'
+            'message' => 'Memory Device updated successfully'
         ], 200);
     }
 
