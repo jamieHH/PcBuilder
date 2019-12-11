@@ -25,11 +25,11 @@ class StorageDevicesController extends Controller
     {
         $breadcrumbs = [
             'Components' => route('components'),
-            'Memory Devices' => route('components.memory-devices'),
-            'New Memory Device' => '#'
+            'Storage Devices' => route('components.storage-devices'),
+            'New Storage Device' => '#'
         ];
 
-        return View::make('components.memory-devices.new')
+        return View::make('components.storage-devices.new')
             ->with('breadcrumbs', $breadcrumbs);
     }
 

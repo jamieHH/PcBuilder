@@ -19,11 +19,6 @@ class StorageDeviceRequest extends Request
         return [];
     }
 
-    public function getStorageDevice()
-    {
-        return StorageDeviceQuery::create()->findOneById($this->route('id'));
-    }
-
     public function getManufacturer()
     {
         return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
@@ -31,16 +26,16 @@ class StorageDeviceRequest extends Request
 
     public function getStorageDeviceType()
     {
-        return StorageDeviceTypeQuery::create()->findOneById($this->route('storage_device_type_id'));
+        return StorageDeviceTypeQuery::create()->findOneById($this->get('storage_device_type_id'));
     }
 
     public function getStorageDeviceFormFactor()
     {
-        return StorageDeviceFormFactorQuery::create()->findOneById($this->route('storage_form_factor_id'));
+        return StorageDeviceFormFactorQuery::create()->findOneById($this->get('storage_device_form_factor_id'));
     }
 
     public function getInterfaceType()
     {
-        return InterfaceTypeQuery::create()->findOneById($this->route('interface_type_id'));
+        return InterfaceTypeQuery::create()->findOneById($this->get('interface_type_id'));
     }
 }

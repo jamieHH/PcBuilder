@@ -52,6 +52,18 @@ Route::namespace('Web')->group(function() {
         });
 
         Route::namespace('StorageDevices')->prefix('storage-devices')->group(function() {
+            Route::middleware('auth')->group(function() {
+                Route::get('/{id}/edit', 'StorageDeviceController@edit')->name('components.storage-devices.storage-device.edit');
+                Route::post('/{id}/edit', 'StorageDeviceController@update')->name('components.storage-devices.storage-device.edit.post');
+                Route::post('/{id}/delete', 'StorageDeviceController@delete')->name('components.storage-devices.storage-device.delete.post');
+
+                Route::get('/new', 'StorageDevicesController@new')->name('components.storage-devices.new');
+                Route::post('/new', 'StorageDevicesController@create')->name('components.storage-devices.new.post');
+            });
+
+            Route::get('/{id}/details', 'StorageDeviceController@details')->name('components.storage-devices.storage-device.details');
+
+            Route::get('/datatable', 'StorageDevicesController@datatable')->name('components.storage-devices.datatable');
             Route::get('/', 'StorageDevicesController@index')->name('components.storage-devices');
         });
 
