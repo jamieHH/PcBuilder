@@ -210,14 +210,16 @@
 
                     vm.errors = {};
                     vm.pageAlert.message = null;
-
+                    vm.isLoading = true;
                     $.post(app.routes['components.storage-devices.storage-device.edit.post'], data, function(response, status) {
+                        vm.isLoading = false;
                         $(".main").animate({ scrollTop: 0 }, "slow");
                         vm.pageAlert = {
                             'type': 'success',
                             'message': response.message
                         }
                     }).fail(function(response, status) {
+                        vm.isLoading = false;
                         $(".main").animate({ scrollTop: 0 }, "slow");
                         if (response.responseJSON.hasOwnProperty('errors')) {
                             vm.errors = response.responseJSON.errors;
