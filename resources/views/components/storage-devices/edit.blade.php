@@ -105,6 +105,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletion-modal">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
                         <button type="submit" class="btn btn-primary pull-right" v-on:click.prevent="postData()">
                             <i class="fa fa-plus"></i> Update Storage Device
                         </button>
