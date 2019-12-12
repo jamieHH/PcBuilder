@@ -237,37 +237,19 @@
                     }
                 },
                 methods: {
-                    getManufacturerOptions: function() {
+                    getSelectOptions: function(route, optionList) {
                         let vm = this;
-                        return $.get(app.routes['misc.manufacturers.select2'], function(response, status) {
-                            vm.manufacturerOptions = response.data;
-                        });
-                    },
-                    getCpuSocketOptions: function() {
-                        let vm = this;
-                        return $.get(app.routes['misc.cpu-sockets.select2'], function(response, status) {
-                            vm.cpuSocketOptions = response.data;
-                        });
-                    },
-                    getMemorySpeedOptions: function() {
-                        let vm = this;
-                        return $.get(app.routes['misc.memory-speeds.select2'], function(response, status) {
-                            vm.memorySpeedOptions = response.data;
-                        });
-                    },
-                    getMemoryTypeOptions: function() {
-                        let vm = this;
-                        return $.get(app.routes['misc.memory-types.select2'], function(response, status) {
-                            vm.memoryTypeOptions = response.data;
+                        return $.get(route, function(response, status) {
+                            vm[optionList] = response.data;
                         });
                     },
                     getData: function() {
                         let vm = this;
                         $.when(
-                            vm.getManufacturerOptions(),
-                            vm.getCpuSocketOptions(),
-                            vm.getMemoryTypeOptions(),
-                            vm.getMemorySpeedOptions(),
+                            vm.getSelectOptions(app.routes['misc.manufacturers.select2'], 'manufacturerOptions'),
+                            vm.getSelectOptions(app.routes['misc.cpu-sockets.select2'], 'cpuSocketOptions'),
+                            vm.getSelectOptions(app.routes['misc.memory-speeds.select2'], 'memorySpeedOptions'),
+                            vm.getSelectOptions(app.routes['misc.memory-types.select2'], 'memoryTypeOptions')
                         ).done(function() {
                             vm.isLoading = false;
                             $.get(app.routes['components.processors.processor.details'], function(response, status) {

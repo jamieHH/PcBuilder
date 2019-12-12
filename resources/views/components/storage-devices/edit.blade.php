@@ -179,38 +179,20 @@
                 isLoading: true
             },
             methods: {
-                getManufacturerOptions: function() {
+                getSelectOptions: function(route, optionList) {
                     let vm = this;
-                    return $.get(app.routes['misc.manufacturers.select2'], function(response, status) {
-                        vm.manufacturerOptions = response.data;
-                    });
-                },
-                getInterfaceTypeOptions: function() {
-                    let vm = this;
-                    return $.get(app.routes['misc.interface-types.select2'], function(response, status) {
-                        vm.interfaceTypeOptions = response.data;
-                    });
-                },
-                getStorageDeviceTypeOptions: function() {
-                    let vm = this;
-                    return $.get(app.routes['misc.storage-device-types.select2'], function(response, status) {
-                        vm.storageDeviceTypeOptions = response.data;
-                    });
-                },
-                getStorageDeviceFormFactorOptions: function() {
-                    let vm = this;
-                    return $.get(app.routes['misc.storage-device-form-factors.select2'], function(response, status) {
-                        vm.storageDeviceFormFactorOptions = response.data;
+                    return $.get(route, function(response, status) {
+                        vm[optionList] = response.data;
                     });
                 },
                 getData: function() {
                     let vm = this;
                     vm.isLoading = true;
                     $.when(
-                        vm.getManufacturerOptions(),
-                        vm.getInterfaceTypeOptions(),
-                        vm.getStorageDeviceTypeOptions(),
-                        vm.getStorageDeviceFormFactorOptions()
+                        vm.getSelectOptions(app.routes['misc.manufacturers.select2'], 'manufacturerOptions'),
+                        vm.getSelectOptions(app.routes['misc.interface-types.select2'], 'interfaceTypeOptions'),
+                        vm.getSelectOptions(app.routes['misc.storage-device-types.select2'], 'storageDeviceTypeOptions'),
+                        vm.getSelectOptions(app.routes['misc.storage-device-form-factors.select2'], 'storageDeviceFormFactorOptions'),
                     ).done(function() {
                         $.get(app.routes['components.storage-devices.storage-device.details'], function(response, status) {
                             vm.isLoading = false;
