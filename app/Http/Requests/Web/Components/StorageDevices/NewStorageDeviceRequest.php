@@ -23,7 +23,6 @@ class NewStorageDeviceRequest extends Request
             'storage_device_form_factor_id' => 'required',
             'name' => 'required',
             'capacity' => 'required',
-            'cache' => 'required',
         ];
     }
 

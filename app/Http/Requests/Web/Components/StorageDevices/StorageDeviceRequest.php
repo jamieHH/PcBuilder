@@ -19,6 +19,11 @@ class StorageDeviceRequest extends Request
         return [];
     }
 
+    public function getStorageDevice()
+    {
+        return StorageDeviceQuery::create()->findOneById($this->route('id'));
+    }
+
     public function getManufacturer()
     {
         return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));

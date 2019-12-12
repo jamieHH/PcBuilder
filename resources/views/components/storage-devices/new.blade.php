@@ -179,6 +179,7 @@
                 },
                 getData: function() {
                     let vm = this;
+                    vm.isLoading = true;
                     $.when(
                         vm.getManufacturerOptions(),
                         vm.getInterfaceTypeOptions(),
@@ -186,7 +187,7 @@
                         vm.getStorageDeviceFormFactorOptions()
                     ).done(function() {
                         vm.isLoading = false;
-                    })
+                    });
                 },
                 postData: function() {
                     let vm = this;

@@ -22,10 +22,17 @@ class StorageDeviceController extends Controller
 
     public function details(StorageDeviceRequest $request)
     {
-        $cpu = $request->getRam();
+        $storageDevice = $request->getStorageDevice();
         return response()->json([
             "storageDevice" => [
-                "id" => $cpu->getId(),
+                "id" => $storageDevice->getId(),
+                "name" => $storageDevice->getName(),
+                "manufacturer_id" => $storageDevice->getManufacturerId(),
+                "interface_type_id" => $storageDevice->getInterfaceTypeId(),
+                "storage_device_type_id" => $storageDevice->getStorageDeviceTypeId(),
+                "storage_device_form_factor_id" => $storageDevice->getStorageDeviceFormFactorId(),
+                "capacity" => $storageDevice->getCapacity(),
+                "cache" => $storageDevice->getCache()
             ]
         ], 200);
     }

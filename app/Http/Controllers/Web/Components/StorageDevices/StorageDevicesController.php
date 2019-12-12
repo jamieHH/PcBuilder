@@ -3,7 +3,7 @@
 use App\Http\Controllers\Web\Controller;
 use App\Http\Requests\Web\Components\StorageDevices\NewStorageDeviceRequest;
 use App\Http\Requests\Web\Components\StorageDevices\StorageDeviceRequest;
-use App\Models\Base\StorageDeviceTypeQuery;
+use App\Models\Base\StorageDeviceQuery;
 use App\Models\StorageDevice;
 use Propel\Runtime\Exception\PropelException;
 use View;
@@ -35,15 +35,15 @@ class StorageDevicesController extends Controller
 
     public function datatable(StorageDeviceRequest $request)
     {
-        $storageDevices = StorageDeviceTypeQuery::create()->find();
+        $storageDevices = StorageDeviceQuery::create()->find();
         $headers = [
             'name' => 'Name',
             'capacity' => 'Capacity',
             'cache' => 'Cache',
             'manufacturer' => ['Manufacturer', 'Name'],
-            'interface_type' => ['InterfaceType', 'Name'],
-            'storage_device_type' => ['StorageDeviceType', 'Name'],
-            'storage_device_form_factor' => ['StorageDeviceType', 'Name'],
+            'interfaceType' => ['InterfaceType', 'Name'],
+            'storageDeviceType' => ['StorageDeviceType', 'Name'],
+            'storageDeviceFormFactor' => ['StorageDeviceFormFactor', 'Name'],
             'edit' => 'Edit'
         ];
         $rows = [];

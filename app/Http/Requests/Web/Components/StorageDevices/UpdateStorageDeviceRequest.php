@@ -16,7 +16,6 @@ class UpdateStorageDeviceRequest extends StorageDeviceRequest
             'storage_device_form_factor_id' => 'required',
             'name' => 'required',
             'capacity' => 'required',
-            'cache' => 'required',
         ];
     }
 }
