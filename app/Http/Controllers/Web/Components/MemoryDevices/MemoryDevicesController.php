@@ -81,8 +81,8 @@ class MemoryDevicesController extends Controller
         try {
             $ram = new Ram();
             $ram->setManufacturer($request->getManufacturer())
-                ->setMemorySpeedId($request->get('memory_speed_id'))
-                ->setMemoryTypeId($request->get('memory_type_id'))
+                ->setMemorySpeed($request->getMemorySpeed())
+                ->setMemoryType($request->getMemoryType())
                 ->setName($request->get('name'))
                 ->setCapacity($request->get('capacity'))
                 ->save();

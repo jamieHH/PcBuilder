@@ -17,6 +17,11 @@ class ProcessorRequest extends Request
         return [];
     }
 
+    public function getCpu()
+    {
+        return CpuQuery::create()->findOneById($this->route('id'));
+    }
+
     public function getManufacturer()
     {
         return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
@@ -25,10 +30,5 @@ class ProcessorRequest extends Request
     public function getCpuSocket()
     {
         return CpuSocketQuery::create()->findOneById($this->get('cpu_socket_id'));
-    }
-
-    public function getCpu()
-    {
-        return CpuQuery::create()->findOneById($this->route('id'));
     }
 }

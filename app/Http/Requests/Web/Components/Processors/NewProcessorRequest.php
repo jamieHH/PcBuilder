@@ -1,16 +1,7 @@
 <?php namespace App\Http\Requests\Web\Components\Processors;
 
-use App\Http\Requests\Web\Components\Request;
-use App\Models\CpuSocketQuery;
-use App\Models\ManufacturerQuery;
-
-class NewProcessorRequest extends Request
+class NewProcessorRequest extends ProcessorRequest
 {
-    public function authorize()
-    {
-        return true; // TODO: if user has admin privileges
-    }
-
     public function rules()
     {
         return [
@@ -23,15 +14,5 @@ class NewProcessorRequest extends Request
             'l3_cache' => 'required|numeric',
             'lithography' => 'numeric',
         ];
-    }
-
-    public function getManufacturer()
-    {
-        return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
-    }
-
-    public function getCpuSocket()
-    {
-        return CpuSocketQuery::create()->findOneById($this->get('cpu_socket_id'));
     }
 }

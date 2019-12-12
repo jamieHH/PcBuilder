@@ -1,15 +1,7 @@
 <?php namespace App\Http\Requests\Web\Components\MemoryDevices;
 
-use App\Http\Requests\Web\Components\Request;
-use App\Models\ManufacturerQuery;
-
-class NewMemoryDeviceRequest extends Request
+class NewMemoryDeviceRequest extends MemoryDeviceRequest
 {
-    public function authorize()
-    {
-        return true; // TODO: if user has admin privileges
-    }
-
     public function rules()
     {
         return [
@@ -19,10 +11,5 @@ class NewMemoryDeviceRequest extends Request
             'name' => 'required',
             'capacity' => 'required|numeric',
         ];
-    }
-
-    public function getManufacturer()
-    {
-        return ManufacturerQuery::create()->findOneById($this->get('manufacturer_id'));
     }
 }

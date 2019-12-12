@@ -2,11 +2,6 @@
 
 class UpdateProcessorRequest extends ProcessorRequest
 {
-    public function authorize()
-    {
-        return true; // TODO: if user has admin privileges
-    }
-
     public function rules()
     {
         return [
