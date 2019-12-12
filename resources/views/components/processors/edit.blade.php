@@ -253,8 +253,8 @@
                             vm.getSelectOptions(app.routes['misc.memory-speeds.select2'], 'memorySpeedOptions'),
                             vm.getSelectOptions(app.routes['misc.memory-types.select2'], 'memoryTypeOptions')
                         ).done(function() {
-                            vm.isLoading = false;
                             $.get(app.routes['components.processors.processor.details'], function(response, status) {
+                                vm.isLoading = false;
                                 vm.processor = response.data;
                             }).fail(function(response, status) {
                                 vm.pageAlert = response.responseJSON.message;
