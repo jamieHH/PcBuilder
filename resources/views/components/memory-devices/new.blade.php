@@ -147,7 +147,7 @@
                         vm.getMemoryTypeOptions(),
                     ).done(function() {
                         vm.isLoading = false;
-                    })
+                    });
                 },
                 postData: function() {
                     let vm = this;

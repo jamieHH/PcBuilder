@@ -250,12 +250,6 @@
 
         app.pageVariables.deletionModal = new Vue({
             el: '#deletion-modal',
-            mounted: function() {
-
-            },
-            data: {
-
-            },
             methods: {
                 postDelete: function() {
                     let vm = this;

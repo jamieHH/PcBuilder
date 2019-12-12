@@ -15,81 +15,59 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('name') }">
-                            <label for="name">Memory Device Name</label>
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input id="name" type="text" class="form-control" name="name" placeholder="Name" v-model="memoryDevice.name" autofocus>
-                            </div>
-                            <span class="help-block" v-if="hasError('name')"> <!-- inline error -->
-                                <ul v-for="error in errors.name">
-                                    <li>@{{ error }}</li>
-                                </ul>
-                            </span>
-                        </div>
+                        <text-input
+                                name="name"
+                                placeholder="Name"
+                                label="Memory Device Name"
+                                icon="fa fa-microchip"
+                                v-bind:field-errors="errors.name"
+                                v-model="memoryDevice.name"
+                        ></text-input>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('manufacturer_id') }">
-                            <label for="manufacturer">Manufacturer</label>
-                            <select id="manufacturer" name="manufacturer_id" class="form-control js-select2" v-model="memoryDevice.manufacturer_id">
-                                @foreach(\App\Models\ManufacturerQuery::create()->find() as $manufacturer)
-                                    <option value="{{ $manufacturer->getId() }}">{{ $manufacturer->getName() }}</option>
-                                @endforeach
-                            </select>
-                            <span class="help-block" v-if="hasError('manufacturer_id')"> <!-- inline error -->
-                                <ul v-for="error in errors.manufacturer_id">
-                                    <li>@{{ error }}</li>
-                                </ul>
-                            </span>
-                        </div>
+                        <select-input
+                                name="manufacturer_id"
+                                label="Manufacturer"
+                                placeholder="Manufacturer"
+                                v-bind:options="manufacturerOptions"
+                                v-bind:field-errors="errors.manufacturer_id"
+                                v-model="memoryDevice.manufacturer_id"
+                        ></select-input>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('memory_speed_id') }">
-                            <label for="memory-speed">Memory Speed</label>
-                            <select id="memory-speed" name="memory_speed_id" class="form-control js-select2" v-model="memoryDevice.memory_speed_id">
-                                @foreach(\App\Models\MemorySpeedQuery::create()->find() as $speed)
-                                    <option value="{{ $speed->getId() }}">{{ $speed->getName() }}</option>
-                                @endforeach
-                            </select>
-                            <span class="help-block" v-if="hasError('memory_speed_id')"> <!-- inline error -->
-                                <ul v-for="error in errors.memory_speed_id">
-                                    <li>@{{ error }}</li>
-                                </ul>
-                            </span>
-                        </div>
+                        <select-input
+                                name="memory_speed_id"
+                                label="Memory Speed"
+                                placeholder="Memory Speed"
+                                v-bind:options="memorySpeedOptions"
+                                v-bind:field-errors="errors.memory_speed_id"
+                                v-model="memoryDevice.memory_speed_id"
+                        ></select-input>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('memory_type_id') }">
-                            <label for="memory-type">Memory Type</label>
-                            <select id="memory-type" name="memory_type_id" class="form-control js-select2" v-model="memoryDevice.memory_type_id">
-                                @foreach(\App\Models\MemoryTypeQuery::create()->find() as $type)
-                                    <option value="{{ $type->getId() }}">{{ $type->getName() }}</option>
-                                @endforeach
-                            </select>
-                            <span class="help-block" v-if="hasError('memory_type_id')"> <!-- inline error -->
-                                <ul v-for="error in errors.memory_type_id">
-                                    <li>@{{ error }}</li>
-                                </ul>
-                            </span>
-                        </div>
+                        <select-input
+                                name="memory_type_id"
+                                label="Memory Type"
+                                placeholder="Memory Type"
+                                v-bind:options="memoryTypeOptions"
+                                v-bind:field-errors="errors.memory_type_id"
+                                v-model="memoryDevice.memory_type_id"
+                        ></select-input>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group form-group-lg" v-bind:class="{ 'has-error': hasError('capacity') }">
-                            <label for="memory-capacity">Capacity <small class="text-muted">(MBs)</small></label>
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon"><i class="fa fa-microchip"></i></span>
-                                <input id="memory-capacity" type="number" min="0" step="1" class="form-control" name="capacity" placeholder="Capacity" v-model="memoryDevice.capacity">
-                            </div>
-                            <span class="help-block" v-if="hasError('capacity')"> <!-- inline error -->
-                                <ul v-for="error in errors.capacity">
-                                    <li>@{{ error }}</li>
-                                </ul>
-                            </span>
-                        </div>
+                        <number-input
+                                name="capacity"
+                                placeholder="Capacity"
+                                label="Capacity (MBs)"
+                                min="0"
+                                icon="fa fa-microchip"
+                                v-bind:field-errors="errors.capacity"
+                                v-model="memoryDevice.capacity"
+                        ></number-input>
                     </div>
                 </div>
                 <div class="row section">
@@ -140,6 +118,10 @@
     app.routes['components.memory-devices.memory-device.edit.post'] = '{{ route('components.memory-devices.memory-device.edit.post', ['id' => $id]) }}';
     app.routes['components.memory-devices.memory-device.delete.post'] = '{{ route('components.memory-devices.memory-device.delete.post', ['id' => $id]) }}';
 
+    app.routes['misc.manufacturers.select2'] = '{{ route('misc.manufacturers.select2') }}';
+    app.routes['misc.memory-speeds.select2'] = '{{ route('misc.memory-speeds.select2') }}';
+    app.routes['misc.memory-types.select2'] = '{{ route('misc.memory-types.select2') }}';
+
     $(document).ready(function() {
         app.pageVariables.editForm = new Vue({
             el: '#edit-form',
@@ -155,6 +137,9 @@
                     "name": null,
                     "capacity": null,
                 },
+                manufacturerOptions: [],
+                memorySpeedOptions: [],
+                memoryTypeOptions: [],
                 errors: {},
                 pageAlert: {
                     'type': '{{ session('pageAlert')['type'] }}',
@@ -162,15 +147,37 @@
                 }
             },
             methods: {
+                getManufacturerOptions: function() {
+                    let vm = this;
+                    return $.get(app.routes['misc.manufacturers.select2'], function(response, status) {
+                        vm.manufacturerOptions = response.data;
+                    });
+                },
+                getMemorySpeedOptions: function() {
+                    let vm = this;
+                    return $.get(app.routes['misc.memory-speeds.select2'], function(response, status) {
+                        vm.memorySpeedOptions = response.data;
+                    });
+                },
+                getMemoryTypeOptions: function() {
+                    let vm = this;
+                    return $.get(app.routes['misc.memory-types.select2'], function(response, status) {
+                        vm.memoryTypeOptions = response.data;
+                    });
+                },
                 getData: function() {
                     let vm = this;
-
-                    // TODO: get selection data!
-
-                    $.get(app.routes['components.memory-devices.memory-device.details'], function(response, status) {
-                        vm.memoryDevice = response.data;
-                    }).fail(function(response, status) {
-                        vm.pageAlert = response.responseJSON.message;
+                    $.when(
+                        vm.getManufacturerOptions(),
+                        vm.getMemorySpeedOptions(),
+                        vm.getMemoryTypeOptions(),
+                    ).done(function() {
+                        vm.isLoading = false;
+                        $.get(app.routes['components.memory-devices.memory-device.details'], function(response, status) {
+                            vm.memoryDevice = response.data;
+                        }).fail(function(response, status) {
+                            vm.pageAlert = response.responseJSON.message;
+                        });
                     });
                 },
                 postData: function() {
@@ -196,9 +203,6 @@
                             'message': response.responseJSON.message
                         }
                     });
-                },
-                hasError: function(fieldName) {
-                    return this.errors.hasOwnProperty(fieldName);
                 }
             }
         });
