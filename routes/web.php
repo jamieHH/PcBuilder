@@ -17,15 +17,15 @@ Route::namespace('Web')->group(function() {
     Route::namespace('Components')->prefix('components')->group(function() {
         Route::namespace('Processors')->prefix('processors')->group(function() {
             Route::middleware('auth')->group(function() {
-                Route::get('/{id}/edit', 'ProcessorController@edit')->name('components.processors.processor.edit');
-                Route::post('/{id}/edit', 'ProcessorController@update')->name('components.processors.processor.edit.post');
-                Route::post('/{id}/delete', 'ProcessorController@delete')->name('components.processors.processor.delete.post');
+                Route::get('/{id}/edit', 'ProcessorsController@edit')->name('components.processors.processor.edit');
+                Route::post('/{id}/edit', 'ProcessorsController@update')->name('components.processors.processor.edit.post');
+                Route::post('/{id}/delete', 'ProcessorsController@delete')->name('components.processors.processor.delete.post');
 
                 Route::get('/new', 'ProcessorsController@new')->name('components.processors.new');
                 Route::post('/new', 'ProcessorsController@create')->name('components.processors.new.post');
             });
 
-            Route::get('/{id}/details', 'ProcessorController@details')->name('components.processors.processor.details');
+            Route::get('/{id}/details', 'ProcessorsController@details')->name('components.processors.processor.details');
 
             Route::get('/datatable', 'ProcessorsController@datatable')->name('components.processors.datatable');
             Route::get('/', 'ProcessorsController@index')->name('components.processors');
@@ -37,15 +37,15 @@ Route::namespace('Web')->group(function() {
 
         Route::namespace('MemoryDevices')->prefix('memory-devices')->group(function() {
             Route::middleware('auth')->group(function() {
-                Route::get('/{id}/edit', 'MemoryDeviceController@edit')->name('components.memory-devices.memory-device.edit');
-                Route::post('/{id}/edit', 'MemoryDeviceController@update')->name('components.memory-devices.memory-device.edit.post');
-                Route::post('/{id}/delete', 'MemoryDeviceController@delete')->name('components.memory-devices.memory-device.delete.post');
+                Route::get('/{id}/edit', 'MemoryDevicesController@edit')->name('components.memory-devices.memory-device.edit');
+                Route::post('/{id}/edit', 'MemoryDevicesController@update')->name('components.memory-devices.memory-device.edit.post');
+                Route::post('/{id}/delete', 'MemoryDevicesController@delete')->name('components.memory-devices.memory-device.delete.post');
 
                 Route::get('/new', 'MemoryDevicesController@new')->name('components.memory-devices.new');
                 Route::post('/new', 'MemoryDevicesController@create')->name('components.memory-devices.new.post');
             });
 
-            Route::get('/{id}/details', 'MemoryDeviceController@details')->name('components.memory-devices.memory-device.details');
+            Route::get('/{id}/details', 'MemoryDevicesController@details')->name('components.memory-devices.memory-device.details');
 
             Route::get('/datatable', 'MemoryDevicesController@datatable')->name('components.memory-devices.datatable');
             Route::get('/', 'MemoryDevicesController@index')->name('components.memory-devices');
@@ -53,15 +53,15 @@ Route::namespace('Web')->group(function() {
 
         Route::namespace('StorageDevices')->prefix('storage-devices')->group(function() {
             Route::middleware('auth')->group(function() {
-                Route::get('/{id}/edit', 'StorageDeviceController@edit')->name('components.storage-devices.storage-device.edit');
-                Route::post('/{id}/edit', 'StorageDeviceController@update')->name('components.storage-devices.storage-device.edit.post');
-                Route::post('/{id}/delete', 'StorageDeviceController@delete')->name('components.storage-devices.storage-device.delete.post');
+                Route::get('/{id}/edit', 'StorageDevicesController@edit')->name('components.storage-devices.storage-device.edit');
+                Route::post('/{id}/edit', 'StorageDevicesController@update')->name('components.storage-devices.storage-device.edit.post');
+                Route::post('/{id}/delete', 'StorageDevicesController@delete')->name('components.storage-devices.storage-device.delete.post');
 
                 Route::get('/new', 'StorageDevicesController@new')->name('components.storage-devices.new');
                 Route::post('/new', 'StorageDevicesController@create')->name('components.storage-devices.new.post');
             });
 
-            Route::get('/{id}/details', 'StorageDeviceController@details')->name('components.storage-devices.storage-device.details');
+            Route::get('/{id}/details', 'StorageDevicesController@details')->name('components.storage-devices.storage-device.details');
 
             Route::get('/datatable', 'StorageDevicesController@datatable')->name('components.storage-devices.datatable');
             Route::get('/', 'StorageDevicesController@index')->name('components.storage-devices');
