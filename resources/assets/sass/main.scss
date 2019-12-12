@@ -124,8 +124,6 @@ body {
   width: 100% !important;
 }
 
-
-
 .select2-selection.select2-selection--single {
   height: 46px;
 }
@@ -142,4 +140,40 @@ body {
 .select2-selection__arrow {
   width: 40px !important;
   height: 44px !important;
+}
+
+// loading overlay
+#loading-overlay {
+  .loader-border {
+    display: inline-block;
+    background: #222222;
+    border-radius: 5px;
+    margin: 100px;
+    padding: 15px;
+    width: fit-content;
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-bottom: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  position: absolute;
+  display: block; /* Hidden by default of none */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128,128,128,0.75); /* Black background with opacity */
+  z-index: 10; /* Specify a stack order in case you're using a different order for other elements */
+  text-align: center;
 }
