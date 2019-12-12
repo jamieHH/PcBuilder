@@ -276,7 +276,7 @@
                         // TODO: get selection data!
 
                         $.get(app.routes['components.processors.processor.details'], function(response, status) {
-                            vm.processor = response.processor;
+                            vm.processor = response.data;
                         }).fail(function(response, status) {
                             vm.pageAlert = response.responseJSON.message;
                         });

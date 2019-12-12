@@ -214,7 +214,7 @@
                     ).done(function() {
                         $.get(app.routes['components.storage-devices.storage-device.details'], function(response, status) {
                             vm.isLoading = false;
-                            vm.storageDevice = response.storageDevice;
+                            vm.storageDevice = response.data;
                         }).fail(function(response, status) {
                             vm.isLoading = false;
                             vm.pageAlert = response.responseJSON.message;

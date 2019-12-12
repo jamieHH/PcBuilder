@@ -24,7 +24,7 @@ class StorageDeviceController extends Controller
     {
         $storageDevice = $request->getStorageDevice();
         return response()->json([
-            "storageDevice" => [
+            "data" => [
                 "id" => $storageDevice->getId(),
                 "name" => $storageDevice->getName(),
                 "manufacturer_id" => $storageDevice->getManufacturerId(),

@@ -168,7 +168,7 @@
                     // TODO: get selection data!
 
                     $.get(app.routes['components.memory-devices.memory-device.details'], function(response, status) {
-                        vm.memoryDevice = response.memoryDevice;
+                        vm.memoryDevice = response.data;
                     }).fail(function(response, status) {
                         vm.pageAlert = response.responseJSON.message;
                     });

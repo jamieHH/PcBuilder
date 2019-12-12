@@ -24,7 +24,7 @@ class ProcessorController extends Controller
     {
         $cpu = $request->getCpu();
         return response()->json([
-            "processor" => [
+            "data" => [
                 "id" => $cpu->getId(),
                 "name" => $cpu->getName(),
                 "manufacturer_id" => $cpu->getManufacturerId(),

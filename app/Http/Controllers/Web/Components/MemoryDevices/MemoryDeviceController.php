@@ -24,7 +24,7 @@ class MemoryDeviceController extends Controller
     {
         $cpu = $request->getRam();
         return response()->json([
-            "memoryDevice" => [
+            "data" => [
                 "id" => $cpu->getId(),
                 "manufacturer_id" => $cpu->getManufacturerId(),
                 "memory_speed_id" => $cpu->getMemorySpeedId(),
