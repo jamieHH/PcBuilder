@@ -1,13 +1,14 @@
 @extends('app')
 
 @section('content')
-<div>
+<div id="edit-form">
+    <loading-overlay v-bind:loading="isLoading"></loading-overlay>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><b><i class="fa fa-plus"></i>Edit Memory Device</b></h3>
         </div>
         <div class="panel-body">
-            <form id="edit-form">
+            <form>
                 {{ csrf_field() }}
                 <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -144,7 +145,8 @@
                 pageAlert: {
                     'type': '{{ session('pageAlert')['type'] }}',
                     'message': '{{ session('pageAlert')['message'] }}'
-                }
+                },
+                isLoading: true
             },
             methods: {
                 getSelectOptions: function(route, optionList) {
