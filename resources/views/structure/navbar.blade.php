@@ -31,27 +31,28 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ route('components') }}">
-                                    Components
+                                    <i class="fa fa-th-list"></i>&nbsp Components
                                 </a>
                                 <a href="{{ route('systems') }}">
-                                    Systems
+                                    <i class="fa fa-hdd-o"></i>&nbsp Systems
                                 </a>
                                 <a href="{{ route('inventories') }}">
-                                    Inventories
+                                    <i class="fa fa-cubes"></i>&nbsp Inventories
                                 </a>
                                 <a href="{{ route('lists') }}">
-                                    Lists
+                                    <i class="fa fa-list"></i>&nbsp Lists
                                 </a>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    Logout
+                                                 document.getElementById('logout-form').submit();"
+                                >
+                                    <i class="fa fa-user-times" aria-hidden="true"></i>Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
