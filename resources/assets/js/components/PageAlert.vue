@@ -1,12 +1,19 @@
 <template>
     <div v-show="doShow" style="display: none;" class="alert alert-dismissible" v-bind:class="'alert-' + alertContainer.type" role="alert">
         <button type="button" class="close" ><span v-on:click="hide()"><i class="fa fa-times" aria-hidden="true"></i></span></button>
-        <h4 class="alert-heading"><strong><span v-if="icon"><i v-bind:class="'fa ' + icon" aria-hidden="true"></i>&nbsp</span>{{ alertContainer.message }}</strong></h4>
+        <h4 class="alert-heading"><span v-if="icon"><i v-bind:class="'fa ' + icon" aria-hidden="true"></i>&nbsp</span>{{ alertContainer.message }}</h4>
     </div>
 </template>
 
 <script>
     export default {
+        mounted: function() {
+            if (this.alertContainer.hasOwnProperty('message')) {
+                if (this.alertContainer.message) {
+                    this.show();
+                }
+            }
+        },
         props: [
             'alertContainer'
         ],
@@ -47,7 +54,7 @@
         },
         watch: {
             'alertContainer': function (val) {
-                if (!val.hasOwnProperty('type') || !val.hasOwnProperty('type')) {
+                if (!val.hasOwnProperty('message') || !val.hasOwnProperty('type')) {
                     this.reset();
                 }
             },

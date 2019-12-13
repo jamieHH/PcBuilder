@@ -18,10 +18,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="alert alert-dismissible" v-bind:class="'alert-' + pageAlert.type" role="alert" style="display: none;" v-show="pageAlert.message">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="alert-heading">@{{ pageAlert.message }}</h4>
-                                </div>
+                                <page-alert v-bind:alert-container="pageAlert"></page-alert>
                             </div>
                         </div>
                         <div class="row">
