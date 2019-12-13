@@ -36,6 +36,18 @@
 
                         <ul class="dropdown-menu">
                             <li>
+                                <a href="{{ route('components') }}">
+                                    Components
+                                </a>
+                                <a href="{{ route('systems') }}">
+                                    Systems
+                                </a>
+                                <a href="{{ route('inventories') }}">
+                                    Inventories
+                                </a>
+                                <a href="{{ route('lists') }}">
+                                    Lists
+                                </a>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
