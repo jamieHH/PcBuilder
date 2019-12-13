@@ -21,58 +21,58 @@
         <div class="col-md-2">
             <div class="section row">
                 <div class="col-md-12 filter-bar">
-                            <strong>Filters</strong>
-                        </div>
-                        <div class="panel-body">
-                            Manufacturer
-                            <div>
-                                <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Western Digital</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="man-opt-2"><label for="man-opt-2">&nbsp; ADATA</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="man-opt-3"><label for="man-opt-3">&nbsp; Samsung</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="man-opt-4"><label for="man-opt-4">&nbsp; SanDisk</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="man-opt-5"><label for="man-opt-5">&nbsp; Crucial</label>
-                            </div>
-                            <hr/>
-                            Form Factor
-                            <div>
-                                <input type="checkbox" id="form-opt-1"><label for="form-opt-1">&nbsp; 3.5"</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="form-opt-3"><label for="form-opt-3">&nbsp; 2.5"</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="form-opt-4"><label for="form-opt-4">&nbsp; PCI-E</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="form-opt-5"><label for="form-opt-5">&nbsp; M.2</label>
-                            </div>
-                            <hr/>
-                            Interface Type
-                            <div>
-                                <input type="checkbox" id="inter-opt-1"><label for="inter-opt-1">&nbsp; SATA 6GBs</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="inter-opt-2"><label for="inter-opt-2">&nbsp; SATA 3GBs</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="inter-opt-3"><label for="inter-opt-3">&nbsp; SATA 1.5GBs</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="inter-opt-4"><label for="inter-opt-4">&nbsp; PCI-E x4</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="inter-opt-5"><label for="inter-opt-5">&nbsp; M.2</label>
-                            </div>
-                            <hr/>
-
+                    <div>
+                        <strong>Filters</strong>
+                    </div>
+                    <hr/>
+                    Manufacturer
+                    <div>
+                        <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Western Digital</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="man-opt-2"><label for="man-opt-2">&nbsp; ADATA</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="man-opt-3"><label for="man-opt-3">&nbsp; Samsung</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="man-opt-4"><label for="man-opt-4">&nbsp; SanDisk</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="man-opt-5"><label for="man-opt-5">&nbsp; Crucial</label>
+                    </div>
+                    <hr/>
+                    Form Factor
+                    <div>
+                        <input type="checkbox" id="form-opt-1"><label for="form-opt-1">&nbsp; 3.5"</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="form-opt-3"><label for="form-opt-3">&nbsp; 2.5"</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="form-opt-4"><label for="form-opt-4">&nbsp; PCI-E</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="form-opt-5"><label for="form-opt-5">&nbsp; M.2</label>
+                    </div>
+                    <hr/>
+                    Interface Type
+                    <div>
+                        <input type="checkbox" id="inter-opt-1"><label for="inter-opt-1">&nbsp; SATA 6GBs</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="inter-opt-2"><label for="inter-opt-2">&nbsp; SATA 3GBs</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="inter-opt-3"><label for="inter-opt-3">&nbsp; SATA 1.5GBs</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="inter-opt-4"><label for="inter-opt-4">&nbsp; PCI-E x4</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="inter-opt-5"><label for="inter-opt-5">&nbsp; M.2</label>
+                    </div>
+                    <hr/>
                 </div>
             </div>
         </div>
