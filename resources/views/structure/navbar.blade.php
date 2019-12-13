@@ -18,9 +18,9 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+{{--            <ul class="nav navbar-nav">--}}
+{{--                &nbsp;--}}
+{{--            </ul>--}}
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ route('components') }}">
@@ -52,7 +51,7 @@
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();"
                                 >
-                                    <i class="fa fa-user-times" aria-hidden="true"></i>Logout
+                                    <i class="fa fa-user-times" aria-hidden="true"></i>&nbsp Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
