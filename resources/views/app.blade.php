@@ -21,7 +21,7 @@
 
             <div class="container-fluid" style="height: 100%;">
                 <div class="row" style="height: 100%;">
-                    <div class="col-sm-3 col-md-2 visible-md sidebar">
+                    <div class="col-sm-3 col-md-2 hidden-sm hidden-xs sidebar">
                         @include('structure.sidebar')
                     </div>
                     <div id="main" class="main">
