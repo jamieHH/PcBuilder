@@ -6,7 +6,12 @@
         <div class="col-md-12">
             <h2>
                 <strong><i class="fa fa-microchip"></i>&nbsp; Storage Devices</strong>
-                <a href="{{ route('components.storage-devices.new') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Storage Device</a>
+                <span class="hidden-xs">
+                    <a href="{{ route('components.storage-devices.new') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Storage Device</a>
+                </span>
+                <span class="visible-xs section">
+                    <a href="{{ route('components.storage-devices.new') }}" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Add New Storage Device</a>
+                </span>
             </h2>
         </div>
     </div>

@@ -6,7 +6,12 @@
         <div class="col-md-12">
             <h2>
                 <strong><i class="fa fa-microchip"></i>&nbsp; Processors</strong>
-                <a href="{{ route('components.processors.new') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Processor</a>
+                <span class=" hidden-xs">
+                    <a href="{{ route('components.processors.new') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Processor</a>
+                </span>
+                <span class="visible-xs section">
+                    <a href="{{ route('components.processors.new') }}" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Add New Processor</a>
+                </span>
             </h2>
         </div>
     </div>
