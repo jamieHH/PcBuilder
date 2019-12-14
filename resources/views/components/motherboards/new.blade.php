@@ -72,11 +72,6 @@
                         <hr />
                     </div>
                 </div>
-                <div class="row section">
-                    <div class="col-md-12">
-                        <hr />
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary pull-right" v-on:click.prevent="postData()">
