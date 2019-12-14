@@ -6,7 +6,7 @@ class NewStorageDeviceRequest extends StorageDeviceRequest
     {
         return [
             'manufacturer_id' => 'required|numeric',
-            'interface_type_id' => 'required',
+            'storage_interface_type_id' => 'required',
             'storage_device_type_id' => 'required',
             'storage_device_form_factor_id' => 'required',
             'name' => 'required',

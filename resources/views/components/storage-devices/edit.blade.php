@@ -36,12 +36,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <select-input
-                                name="interface_type_id"
+                                name="storage_interface_type_id"
                                 label="Interface Type"
                                 placeholder="Storage Speed"
-                                v-bind:options="interfaceTypeOptions"
-                                v-bind:field-errors="errors.interface_type_id"
-                                v-model="storageDevice.interface_type_id"
+                                v-bind:options="storageInterfaceTypeOptions"
+                                v-bind:field-errors="errors.storage_interface_type_id"
+                                v-model="storageDevice.storage_interface_type_id"
                         ></select-input>
                     </div>
                     <div class="col-md-6">
@@ -145,7 +145,7 @@
     app.routes['components.storage-devices.storage-device.delete.post'] = '{{ route('components.storage-devices.storage-device.delete.post', ['id' => $id]) }}';
 
     app.routes['misc.manufacturers.select2'] = '{{ route('misc.manufacturers.select2') }}';
-    app.routes['misc.interface-types.select2'] = '{{ route('misc.interface-types.select2') }}';
+    app.routes['misc.storage-interface-types.select2'] = '{{ route('misc.storage-interface-types.select2') }}';
     app.routes['misc.storage-device-types.select2'] = '{{ route('misc.storage-device-types.select2') }}';
     app.routes['misc.storage-device-form-factors.select2'] = '{{ route('misc.storage-device-form-factors.select2') }}';
 
@@ -158,7 +158,7 @@
             data: {
                 storageDevice: {
                     'manufacturer_id': null,
-                    'interface_type_id': null,
+                    'storage_interface_type_id': null,
                     'storage_device_type_id': null,
                     'storage_device_form_factor_id': null,
                     'name': null,
@@ -166,7 +166,7 @@
                     'cache': null,
                 },
                 manufacturerOptions: [],
-                interfaceTypeOptions: [],
+                storageInterfaceTypeOptions: [],
                 storageDeviceTypeOptions: [],
                 storageDeviceFormFactorOptions: [],
                 errors: {},
@@ -188,7 +188,7 @@
                     vm.isLoading = true;
                     $.when(
                         vm.getSelectOptions(app.routes['misc.manufacturers.select2'], 'manufacturerOptions'),
-                        vm.getSelectOptions(app.routes['misc.interface-types.select2'], 'interfaceTypeOptions'),
+                        vm.getSelectOptions(app.routes['misc.storage-interface-types.select2'], 'storageInterfaceTypeOptions'),
                         vm.getSelectOptions(app.routes['misc.storage-device-types.select2'], 'storageDeviceTypeOptions'),
                         vm.getSelectOptions(app.routes['misc.storage-device-form-factors.select2'], 'storageDeviceFormFactorOptions'),
                     ).done(function() {

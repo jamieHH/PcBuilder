@@ -130,7 +130,7 @@
                                 { "data": "capacity" },
                                 { "data": "cache" },
                                 { "data": "manufacturer" },
-                                { "data": "interfaceType" },
+                                { "data": "storageInterfaceType" },
                                 { "data": "storageDeviceType" },
                                 { "data": "storageDeviceFormFactor" },
                                 { "data": "edit" }

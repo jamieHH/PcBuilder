@@ -42,7 +42,7 @@ class StorageDevicesController extends Controller
             'capacity' => 'Capacity',
             'cache' => 'Cache',
             'manufacturer' => ['Manufacturer', 'Name'],
-            'interfaceType' => ['InterfaceType', 'Name'],
+            'storageInterfaceType' => ['StorageInterfaceType', 'Name'],
             'storageDeviceType' => ['StorageDeviceType', 'Name'],
             'storageDeviceFormFactor' => ['StorageDeviceFormFactor', 'Name'],
             'edit' => 'Edit'
@@ -85,7 +85,7 @@ class StorageDevicesController extends Controller
             $storageDevice = new StorageDevice();
             $storageDevice->setManufacturer($request->getManufacturer())
                 ->setStorageDeviceType($request->getStorageDeviceType())
-                ->setInterfaceType($request->getInterfaceType())
+                ->setStorageInterfaceType($request->getStorageInterfaceType())
                 ->setStorageDeviceFormFactor($request->getStorageDeviceFormFactor())
                 ->setName($request->get('name'))
                 ->setCapacity($request->get('capacity'))
@@ -126,7 +126,7 @@ class StorageDevicesController extends Controller
                 "id" => $storageDevice->getId(),
                 "name" => $storageDevice->getName(),
                 "manufacturer_id" => $storageDevice->getManufacturerId(),
-                "interface_type_id" => $storageDevice->getInterfaceTypeId(),
+                "storage_interface_type_id" => $storageDevice->getStorageInterfaceTypeId(),
                 "storage_device_type_id" => $storageDevice->getStorageDeviceTypeId(),
                 "storage_device_form_factor_id" => $storageDevice->getStorageDeviceFormFactorId(),
                 "capacity" => $storageDevice->getCapacity(),
@@ -141,7 +141,7 @@ class StorageDevicesController extends Controller
             $storageDevice = $request->getStorageDevice();
             $storageDevice->setManufacturer($request->getManufacturer())
                 ->setStorageDeviceType($request->getStorageDeviceType())
-                ->setInterfaceType($request->getInterfaceType())
+                ->setStorageInterfaceType($request->getStorageInterfaceType())
                 ->setStorageDeviceFormFactor($request->getStorageDeviceFormFactor())
                 ->setName($request->get('name'))
                 ->setCapacity($request->get('capacity'))

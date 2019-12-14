@@ -1,15 +1,15 @@
-<?php namespace App\Http\Controllers\Web\Misc\InterfaceTypes;
+<?php namespace App\Http\Controllers\Web\Misc\StorageInterfaceTypes;
 
 use App\Http\Controllers\Web\Controller;
-use App\Models\InterfaceTypeQuery;
+use App\Models\StorageInterfaceTypeQuery;
 use View;
 
-class InterfaceTypesController extends Controller
+class StorageInterfaceTypesController extends Controller
 {
     public function select2()
     {
         $options = [];
-        $items = InterfaceTypeQuery::create()->find();
+        $items = StorageInterfaceTypeQuery::create()->find();
         foreach ($items as $item) {
             array_push($options, [
                 'id' => $item->getId(),

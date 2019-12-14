@@ -1,11 +1,11 @@
 <?php namespace App\Http\Requests\Web\Components\StorageDevices;
 
 use App\Http\Requests\Web\Components\Request;
-use App\Models\InterfaceTypeQuery;
 use App\Models\ManufacturerQuery;
 use App\Models\StorageDeviceFormFactorQuery;
 use App\Models\StorageDeviceQuery;
 use App\Models\StorageDeviceTypeQuery;
+use App\Models\StorageInterfaceTypeQuery;
 
 class StorageDeviceRequest extends Request
 {
@@ -39,8 +39,8 @@ class StorageDeviceRequest extends Request
         return StorageDeviceFormFactorQuery::create()->findOneById($this->get('storage_device_form_factor_id'));
     }
 
-    public function getInterfaceType()
+    public function getStorageInterfaceType()
     {
-        return InterfaceTypeQuery::create()->findOneById($this->get('interface_type_id'));
+        return StorageInterfaceTypeQuery::create()->findOneById($this->get('storage_interface_type_id'));
     }
 }
