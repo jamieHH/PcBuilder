@@ -32,6 +32,18 @@ Route::namespace('Web')->group(function() {
         });
 
         Route::namespace('Motherboards')->prefix('motherboards')->group(function() {
+            Route::middleware('auth')->group(function() {
+                Route::get('/{id}/edit', 'MotherboardsController@edit')->name('components.motherboards.motherboard.edit');
+                Route::post('/{id}/edit', 'MotherboardsController@update')->name('components.motherboards.motherboard.edit.post');
+                Route::post('/{id}/delete', 'MotherboardsController@delete')->name('components.motherboards.motherboard.delete.post');
+
+                Route::get('/new', 'MotherboardsController@new')->name('components.motherboards.new');
+                Route::post('/new', 'MotherboardsController@create')->name('components.motherboards.new.post');
+            });
+
+            Route::get('/{id}/details', 'MotherboardsController@details')->name('components.motherboards.motherboard.details');
+
+            Route::get('/datatable', 'MotherboardsController@datatable')->name('components.motherboards.datatable');
             Route::get('/', 'MotherboardsController@index')->name('components.motherboards');
         });
 
@@ -96,6 +108,9 @@ Route::namespace('Web')->group(function() {
         Route::get('/storage-interface-types/select2', 'StorageInterfaceTypes\StorageInterfaceTypesController@select2')->name('misc.storage-interface-types.select2');
         Route::get('/storage-device-types/select2', 'StorageDeviceTypes\StorageDeviceTypesController@select2')->name('misc.storage-device-types.select2');
         Route::get('/storage-device-form-factors/select2', 'StorageDeviceFormFactors\StorageDeviceFormFactorsController@select2')->name('misc.storage-device-form-factors.select2');
+
+        Route::get('/motherboard-form-factors/select2', 'MotherboardFormFactors\MotherboardFormFactorsController@select2')->name('misc.motherboard-form-factors.select2');
+        Route::get('/mainboard-chipsets/select2', 'MainboardChipsets\MainboardChipsetsController@select2')->name('misc.mainboard-chipsets.select2');
     });
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
