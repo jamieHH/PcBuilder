@@ -22,28 +22,30 @@
             <div class="section row">
                 <div class="col-md-12 filter-bar">
                     <div>
-                        <strong>Filters</strong>
+                        <strong>Filters <button class="close pull-right" v-on:click="toggleShowFilters()"><span aria-hidden="true">&times;</span></button></strong>
                     </div>
                     <hr/>
-                    Manufacturer
-                    <div>
-                        <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Intel</label>
+                    <div v-show="showFilters">
+                        Manufacturer
+                        <div>
+                            <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Intel</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="man-opt-2"><label for="man-opt-2">&nbsp; AMD</label>
+                        </div>
+                        <hr/>
+                        CPU Socket
+                        <div>
+                            <input type="checkbox" id="sock-opt-1"><label for="sock-opt-1">&nbsp; LGA 1151</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="sock-opt-2"><label for="sock-opt-2">&nbsp; AM 3</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="sock-opt-3"><label for="sock-opt-3">&nbsp; AM 4</label>
+                        </div>
+                        <hr/>
                     </div>
-                    <div>
-                        <input type="checkbox" id="man-opt-2"><label for="man-opt-2">&nbsp; AMD</label>
-                    </div>
-                    <hr/>
-                    CPU Socket
-                    <div>
-                        <input type="checkbox" id="sock-opt-1"><label for="sock-opt-1">&nbsp; LGA 1151</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="sock-opt-2"><label for="sock-opt-2">&nbsp; AM 3</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="sock-opt-3"><label for="sock-opt-3">&nbsp; AM 4</label>
-                    </div>
-                    <hr/>
                 </div>
             </div>
         </div>
@@ -85,6 +87,7 @@
                     this.initialisePage();
                 },
                 data: {
+                    showFilters: false,
                     pageAlert: {
                         'type': '{{ session('pageAlert')['type'] }}',
                         'message': '{{ session('pageAlert')['message'] }}'
@@ -103,6 +106,9 @@
                                 { "data": "edit" }
                             ]
                         });
+                    },
+                    toggleShowFilters: function() {
+                        this.showFilters = !this.showFilters;
                     }
                 }
             });
