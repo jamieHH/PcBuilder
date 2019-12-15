@@ -113,6 +113,10 @@ Route::namespace('Web')->group(function() {
         Route::get('/mainboard-chipsets/select2', 'MainboardChipsets\MainboardChipsetsController@select2')->name('misc.mainboard-chipsets.select2');
     });
 
+    Route::get('/home', function () {
+        return redirect(route('dashboard'));
+    });
+
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('/', 'Controller@index')->name('root');

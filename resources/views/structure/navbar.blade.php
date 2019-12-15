@@ -35,6 +35,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
+                                <a href="{{ route('dashboard') }}">
+                                    <i class="fa fa-tachometer"></i>&nbsp Dashboard
+                                </a>
                                 <a href="{{ route('components') }}">
                                     <i class="fa fa-th-list"></i>&nbsp Components
                                 </a>
