@@ -22,10 +22,10 @@
             <div class="section row">
                 <div class="col-md-12 filter-bar">
                     <div>
-                        <strong>Filters <button class="close pull-right" v-on:click="toggleShowFilters()"><span aria-hidden="true">&times;</span></button></strong>
+                        <strong>Filters <button class="close pull-right" v-on:click="toggleShowFilters()"><i v-bind:class="'fa ' + (showFilters ? 'fa-angle-up' : 'fa-angle-down')" aria-hidden="true"></i></button></strong>
                     </div>
                     <hr/>
-                    <div v-show="showFilters">
+                    <div id="filters">
                         Manufacturer
                         <div>
                             <input type="checkbox" id="man-opt-1"><label for="man-opt-1">&nbsp; Intel</label>
@@ -125,7 +125,7 @@
                     this.initialisePage();
                 },
                 data: {
-                    showFilters: false,
+                    showFilters: true,
                     pageAlert: {
                         'type': '{{ session('pageAlert')['type'] }}',
                         'message': '{{ session('pageAlert')['message'] }}'
@@ -149,6 +149,11 @@
                     },
                     toggleShowFilters: function() {
                         this.showFilters = !this.showFilters;
+                        if (this.showFilters) {
+                            $('#filters').slideDown();
+                        } else {
+                            $('#filters').slideUp();
+                        }
                     }
                 }
             });
