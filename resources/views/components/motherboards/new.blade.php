@@ -16,7 +16,7 @@
                         <text-input
                                 name="name"
                                 placeholder="Name"
-                                label="Memory Device Name"
+                                label="Motherboard Name"
                                 icon="fa fa-microchip"
                                 v-bind:field-errors="errors.name"
                                 v-model="motherboard.name"
